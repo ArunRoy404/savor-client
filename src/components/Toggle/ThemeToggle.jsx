@@ -13,7 +13,7 @@ const ThemeToggle = () => {
 
 
     return (
-        <div className="mx-3">
+        <div className="w-5 h-7">
             <label className="swap swap-rotate">
                 <input type="checkbox" onChange={handleToggle} checked={isDark} />
                 <SunIcon />
