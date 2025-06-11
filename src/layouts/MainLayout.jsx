@@ -1,11 +1,12 @@
 import { Outlet } from "react-router";
 import { Toaster } from "react-hot-toast";
+import Navbar from "../components/Navbar/Navbar";
 
 
 const MainLayout = () => {
     return (
         <>
-            <header />
+            <Navbar/>
             <Toaster position="top-center" reverseOrder={false}></Toaster>
             <Outlet />
             <footer />

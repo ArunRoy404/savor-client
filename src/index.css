@@ -1,2 +1,33 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+html {
+  overflow-y: scroll;
+}
+
+nav ul .active {
+  border-bottom: 2px solid #A46EDE;
+  border-radius: 0px;
+  color: #A46EDE;
+  font-weight: 800;
+}
+
+html[data-theme="light"] {
+  --color-primary: white;
+  --color-secondary: #white;
+  --color-accent: white;
+  --color-neutral: #374151;
+  --color-base: #ffffff;
+  --color-text: #111827;
+  --color-btn-primary: black;
+}
+
+html[data-theme="dark"] {
+  --color-primary: #202531;
+  --color-secondary: #1C1F2A;
+  --color-accent: #202531;
+  --color-neutral: #374151;
+  --color-base: #ffffff;
+  --color-text: #111827;
+  --color-btn-primary: white;
+}
