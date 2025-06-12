@@ -1,4 +1,4 @@
-import logo from "../../../public/logo.png";
+import logo from "/logo.png";
 const Logo = () => {
     return (
         <div className="cursor-pointer flex items-center space-x-3">

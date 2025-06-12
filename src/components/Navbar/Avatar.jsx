@@ -10,7 +10,7 @@ const Avatar = () => {
             <div tabIndex={0} role="button" className="avatar">
                 <div className="w-7 rounded-full">
                     {/* <img src={user?.photoURL} /> */}
-                    <img src='https://lh3.googleusercontent.com/a/ACg8ocKx707Uytkb5r9vKwZbuht-PhEz4Q4C6uyM_6L4P2SZmaItc_Th=s288-c-no' />
+                    <img src='https://i.ibb.co/sdcY1StY/unnamed.png' />
                 </div>
             </div>
             <ul

@@ -7,7 +7,7 @@ import NavDropDown from './NavDropDown';
 
 const NavActions = () => {
     return (
-        <div className="navbar-end space-x-2">
+        <div className="flex items-center md:navbar-end space-x-2 ">
             {/* theme toggle  */}
             <NavAction>
                 <ThemeToggle />
@@ -29,9 +29,11 @@ const NavActions = () => {
             </NavAction>
 
             {/* nav dropdown  */}
-            <NavAction>
-                <NavDropDown />
-            </NavAction>
+            <div className='md:hidden'>
+                <NavAction>
+                    <NavDropDown />
+                </NavAction>
+            </div>
         </div>
     );
 };
