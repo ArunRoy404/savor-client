@@ -4,7 +4,7 @@ const SwiperContent = ({isActive, title, subtitle, testimonial}) => {
     return (
         <div className={`
             ${isActive ?'delay-700':'-translate-x-[70%] opacity-0'}
-        transition absolute duration-500 text-left md:top-20 xl:left-20`
+        transition absolute duration-500 text-left left-5 md:top-20 xl:left-20`
         }>
             <h1 className="font-bold md:text-4xl">{title}</h1>
             <p className="font-semibold text-sm text-gray400">{subtitle}</p>

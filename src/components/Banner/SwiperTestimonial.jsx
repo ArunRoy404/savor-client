@@ -5,7 +5,7 @@ const SwiperTestimonial = ({ isActive, testimonial }) => {
     return (
         <div className={`
             ${isActive ?'delay-700':'translate-x-[70%] opacity-0'}
-        transition absolute duration-500 text-left right-0 top-[320px] md:top-[600px] xl:top-[300px] xl:right-20 w-60 md:w-90`
+         transition absolute duration-500 text-left right-5 top-[360px] md:top-[600px] xl:top-[300px] xl:right-20 w-60 md:w-90`
         }>
             <div className="bg-black h-1 w-20"></div>
             <p className="font-semibold text-sm md:text-md">{testimonial.review}</p>
