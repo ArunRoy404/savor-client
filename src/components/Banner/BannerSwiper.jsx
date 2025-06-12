@@ -41,7 +41,7 @@ export default function BannerSwiper() {
           delay:5000
         }}
         modules={[Autoplay]}
-        className="mySwiper h-[calc(100vh-250px)] md:h-[calc(100vh-300px)]">
+        className="mySwiper h-[460px] md:h-[700px] xl:h-[calc(100vh-300px)]">
         {
           sliderData.map((data, index) => <SwiperSlide><SwiperCard data={data} key={index} isActive={index === activeIndex} activeIndex={activeIndex} /></SwiperSlide>)
         }
