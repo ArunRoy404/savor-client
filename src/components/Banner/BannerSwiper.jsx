@@ -31,7 +31,7 @@ export default function BannerSwiper() {
   }
 
   return (
-    <div className='mt-10 md:mt-4 relative swiper-container'>
+    <div className='mt-15 md:mt-4 relative swiper-container'>
       <Swiper
         onSwiper={e => swiperRef.current = e}
         onSlideChange={e => { setActiveIndex(e.realIndex) }}
@@ -41,7 +41,7 @@ export default function BannerSwiper() {
           delay:5000
         }}
         modules={[Autoplay]}
-        className="mySwiper h-[460px] md:h-[700px] xl:h-[calc(100vh-300px)]">
+        className="mySwiper h-[460px] md:h-[700px] xl:h-[500px]">
         {
           sliderData.map((data, index) => <SwiperSlide><SwiperCard data={data} key={index} isActive={index === activeIndex} activeIndex={activeIndex} /></SwiperSlide>)
         }

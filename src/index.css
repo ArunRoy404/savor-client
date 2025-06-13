@@ -3,7 +3,6 @@
 
 html {
   overflow-y: scroll;
-  transition: background-color 0.3s ease;
 }
 
 nav ul .active {
@@ -14,7 +13,7 @@ nav ul .active {
 html[data-theme="light"] {
   --color-primary: white;
   --color-secondary: #white;
-  --color-accent: white;
+  --color-accent: #fafafa;
   --color-neutral: rgba(180, 180, 180, 0.6);
   --color-base: #ffffff;
   --color-text: #111827;
@@ -29,4 +28,8 @@ html[data-theme="dark"] {
   --color-base: #ffffff;
   --color-text: #111827;
   --color-btn-primary: white;
+}
+
+html{
+  background-color: var(--color-accent);
 }
