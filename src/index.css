@@ -6,7 +6,6 @@ html {
 }
 
 nav ul .active {
-  border-radius: 0px;
   color: #FB8C00;
 }
 
@@ -30,6 +29,7 @@ html[data-theme="dark"] {
   --color-btn-primary: white;
 }
 
-html{
-  background-color: var(--color-accent);
+body{
+  transition: background-color 1s ease;
+  background: var(--color-accent);
 }

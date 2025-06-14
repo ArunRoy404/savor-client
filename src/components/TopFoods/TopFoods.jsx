@@ -9,7 +9,7 @@ const TopFoods = () => {
     const {isDark} = useThemeContext()
 
     return (
-        <div className={`${isDark? 'bg-[#2c313d]' :'bg-[#dfdcdc]'} pt-10 md:pt-20 pb-10 mt-20 mb-10 container mx-auto text-center rounded-2xl relative transition transform-colors duration-1000`}>
+        <div className={`${isDark? 'bg-[#2c313d]' :'bg-[#dfdcdc]'} pt-10 md:pt-20 pb-10 mt-20 mb-10 container mx-auto text-center rounded-2xl relative`}>
             <h1 className='z-10 text-xl font-bold md:text-4xl md:font-semibold xl:font-bold mb-3 md:mb-6'>
                 Most Popular Dishes on Savor
             </h1>

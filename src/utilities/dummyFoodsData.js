@@ -352,7 +352,7 @@ const foodItems = [
   },
   {
     name: "Oatmeal with Berries",
-    image: "https://www.pcrm.org/sites/default/files/Oatmeal%20and%20Berries.jpg", 
+    image: "https://thehealthytart.com/wp-content/uploads/2018/01/Porridge-with-Berries-and-Seeds_landscape.jpg", 
     category: "Breakfast",
     description: "Warm oatmeal topped with mixed berries, honey, and a sprinkle of chia seeds.",
     servings: 1,

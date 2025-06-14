@@ -21,12 +21,6 @@ const ThemesProvider = ({ children }) => {
         }
     }, [isDark])
 
-    useEffect(() => {
-        window.addEventListener('load', () => {
-            document.documentElement.style.transition = 'background-color 1s ease';
-        });
-    }, []);
-
 
     const handleToggle = () => {
         setIsDark(!isDark)
