@@ -22,8 +22,8 @@ const TopFoods = () => {
                     Show All
                 </Button>
             </div>
-            <img className="hidden md:block absolute w-40 top-20 left-20 rotate-270" src={leaf} alt="" />
-            <img className="hidden md:block absolute w-40 bottom-20 right-20" src={poring} alt="" />
+            <img className="absolute w-30 top-10 left-10 md:w-40 md:top-20 md:left-20 rotate-270" src={leaf} alt="" />
+            <img className="absolute w-30 bottom-10 right-10 md:w-40 md:bottom-20 md:right-20" src={poring} alt="" />
         </div>
     );
 };

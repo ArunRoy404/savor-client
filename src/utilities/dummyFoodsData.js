@@ -36,7 +36,7 @@ const foodItems = [
       }
     ],
     purchaseCount: 128,
-    price: 14.99 // Added price
+    price: 14.99 
   },
   {
     name: "Vegan Buddha Bowl",
@@ -75,7 +75,7 @@ const foodItems = [
       }
     ],
     purchaseCount: 203,
-    price: 12.49 // Added price
+    price: 12.49 
   },
   {
     name: "Chicken Tikka Masala",
@@ -114,7 +114,7 @@ const foodItems = [
       }
     ],
     purchaseCount: 98,
-    price: 16.99 // Added price
+    price: 16.99 
   },
   {
     name: "Mango Smoothie",
@@ -153,7 +153,7 @@ const foodItems = [
       }
     ],
     purchaseCount: 145,
-    price: 7.99 // Added price
+    price: 7.99 
   },
   {
     name: "Pad Thai",
@@ -192,7 +192,7 @@ const foodItems = [
       }
     ],
     purchaseCount: 112,
-    price: 13.99 // Added price
+    price: 13.99 
   },
   {
     name: "Avocado Toast",
@@ -231,7 +231,7 @@ const foodItems = [
       }
     ],
     purchaseCount: 89,
-    price: 9.49 // Added price
+    price: 9.49 
   },
   {
     name: "Grilled Salmon Salad",
@@ -270,7 +270,7 @@ const foodItems = [
       }
     ],
     purchaseCount: 107,
-    price: 17.99 // Added price
+    price: 17.99 
   },
   {
     name: "Chocolate Avocado Mousse",
@@ -309,7 +309,7 @@ const foodItems = [
       }
     ],
     purchaseCount: 95,
-    price: 8.99 // Added price
+    price: 8.99 
   },
   {
     name: "Beef Tacos",
@@ -348,7 +348,7 @@ const foodItems = [
       }
     ],
     purchaseCount: 134,
-    price: 15.49 // Added price
+    price: 15.49 
   },
   {
     name: "Oatmeal with Berries",
@@ -387,7 +387,7 @@ const foodItems = [
       }
     ],
     purchaseCount: 117,
-    price: 6.99 // Added price
+    price: 6.99 
   }
 ];
 
