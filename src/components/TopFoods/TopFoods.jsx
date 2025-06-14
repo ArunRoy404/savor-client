@@ -2,14 +2,17 @@ import useThemeContext from "../../custom_contexts/useThemeContext";
 import Button from "../UI/Button";
 import TopFoodsContainer from "./TopFoodsContainer";
 import leaf from "/leaf.png"
-import poring from '/poring.png'
+import pea from '/pea.png'
 
 const TopFoods = () => {
 
-    const {isDark} = useThemeContext()
+    const { isDark } = useThemeContext()
 
     return (
-        <div className={`${isDark? 'bg-[#2c313d]' :'bg-[#dfdcdc]'} pt-10 md:pt-20 pb-10 mt-20 mb-10 container mx-auto text-center rounded-2xl relative`}>
+        <div className={`${isDark ? 'bg-[#2c313d]' : 'bg-[#dfdcdc]'} pt-10 md:pt-20 pb-10 mt-20 mb-10 container mx-auto text-center rounded-2xl relative`}>
+            <img className="absolute w-20 top-10 left-10 md:w-40 md:top-20 md:left-20 rotate-270" src={leaf} alt="" />
+            <img className="absolute w-20 bottom-10 right-10 md:w-40 md:bottom-20 md:right-20" src={pea} alt="" />
+
             <h1 className='z-10 text-xl font-bold md:text-4xl md:font-semibold xl:font-bold mb-3 md:mb-6'>
                 Most Popular Dishes on Savor
             </h1>
@@ -22,8 +25,6 @@ const TopFoods = () => {
                     Show All
                 </Button>
             </div>
-            <img className="absolute w-30 top-10 left-10 md:w-40 md:top-20 md:left-20 rotate-270" src={leaf} alt="" />
-            <img className="absolute w-30 bottom-10 right-10 md:w-40 md:bottom-20 md:right-20" src={poring} alt="" />
         </div>
     );
 };

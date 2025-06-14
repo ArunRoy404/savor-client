@@ -36,7 +36,10 @@ const foodItems = [
       }
     ],
     purchaseCount: 128,
-    price: 14.99 
+    price: 14.99,
+    quantity: 10,
+    origin: "Italy",
+    procedure: "Cook spaghetti in salted water. Sauté cubed pancetta until crispy. Whisk egg yolks with pecorino and pepper. Toss hot pasta into the pan with pancetta, then mix in egg sauce off heat."
   },
   {
     name: "Vegan Buddha Bowl",
@@ -75,7 +78,10 @@ const foodItems = [
       }
     ],
     purchaseCount: 203,
-    price: 12.49 
+    price: 12.49,
+    quantity: 5,
+    origin: "USA",
+    procedure: "Roast sweet potatoes with olive oil. Cook quinoa. Layer greens, quinoa, veggies, and avocado. Drizzle with homemade tahini dressing."
   },
   {
     name: "Chicken Tikka Masala",
@@ -114,7 +120,10 @@ const foodItems = [
       }
     ],
     purchaseCount: 98,
-    price: 16.99 
+    price: 16.99,
+    quantity: 7,
+    origin: "India",
+    procedure: "Marinate chicken in yogurt and spices, grill until charred. Sauté onions, garlic, ginger, add tomato puree and simmer. Add chicken and cream, finish with garam masala."
   },
   {
     name: "Mango Smoothie",
@@ -153,7 +162,10 @@ const foodItems = [
       }
     ],
     purchaseCount: 145,
-    price: 7.99 
+    price: 7.99,
+    quantity: 9,
+    origin: "Tropical regions",
+    procedure: "Blend frozen mango chunks, banana, coconut milk, and ice until smooth. Sweeten with honey if needed."
   },
   {
     name: "Pad Thai",
@@ -192,7 +204,10 @@ const foodItems = [
       }
     ],
     purchaseCount: 112,
-    price: 13.99 
+    price: 13.99,
+    quantity: 16,
+    origin: "Thailand",
+    procedure: "Soak noodles in warm water. Stir-fry tofu, add beaten egg, then shrimp. Add noodles, bean sprouts, and tamarind sauce. Garnish with crushed peanuts and lime."
   },
   {
     name: "Avocado Toast",
@@ -231,7 +246,10 @@ const foodItems = [
       }
     ],
     purchaseCount: 89,
-    price: 9.49 
+    price: 9.49,
+    quantity: 3,
+    origin: "USA",
+    procedure: "Toast bread, mash avocado on top, add poached egg, sprinkle chili flakes, and drizzle lemon juice."
   },
   {
     name: "Grilled Salmon Salad",
@@ -270,7 +288,10 @@ const foodItems = [
       }
     ],
     purchaseCount: 107,
-    price: 17.99 
+    price: 17.99,
+    quantity: 21,
+    origin: "France",
+    procedure: "Grill salmon with seasoning. Toss greens with balsamic dressing. Top with salmon, tomatoes, and cucumber slices."
   },
   {
     name: "Chocolate Avocado Mousse",
@@ -309,7 +330,10 @@ const foodItems = [
       }
     ],
     purchaseCount: 95,
-    price: 8.99 
+    price: 8.99,
+    quantity: 8,
+    origin: "USA",
+    procedure: "Blend avocado, cocoa, maple syrup, and vanilla until smooth. Chill before serving."
   },
   {
     name: "Beef Tacos",
@@ -348,7 +372,10 @@ const foodItems = [
       }
     ],
     purchaseCount: 134,
-    price: 15.49 
+    price: 15.49,
+    quantity: 6,
+    origin: "Mexico",
+    procedure: "Brown beef with onion and taco seasoning. Warm tortillas, fill with meat, add cilantro, and squeeze lime over top."
   },
   {
     name: "Oatmeal with Berries",
@@ -387,7 +414,10 @@ const foodItems = [
       }
     ],
     purchaseCount: 117,
-    price: 6.99 
+    price: 6.99,
+    quantity: 0,
+    origin: "Scandinavia",
+    procedure: "Simmer oats in almond milk until thickened. Top with fresh berries, drizzle honey, and sprinkle chia seeds."
   }
 ];
 

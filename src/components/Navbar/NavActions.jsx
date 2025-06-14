@@ -29,7 +29,7 @@ const NavActions = () => {
             </NavAction>
 
             {/* nav dropdown  */}
-            <div className='md:hidden'>
+            <div className='lg:hidden'>
                 <NavAction>
                     <NavDropDown />
                 </NavAction>

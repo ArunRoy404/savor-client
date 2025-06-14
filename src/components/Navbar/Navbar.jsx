@@ -8,8 +8,8 @@ const Navbar = () => {
     // const { loggedUser } = useAuthContext()
 
     return (
-        <nav className="z-100">
-            <div className="w-full backdrop-blur-sm z-50  flex">
+        <nav className="relative z-100">
+            <div className="w-full backdrop-blur-sm z-50 flex">
                 <div className="navbar container mx-auto flex justify-between">
                     <div className="flex items-center gap-20">
 

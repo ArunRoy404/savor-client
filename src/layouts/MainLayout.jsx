@@ -8,7 +8,7 @@ const MainLayout = () => {
         <>
             <Navbar/>
             <Toaster position="top-center" reverseOrder={false}></Toaster>
-            <div className="px-3 md:px-0">
+            <div className="px-3 md:px-0 container mx-auto">
                 <Outlet />
             </div>
             <footer />

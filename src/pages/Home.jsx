@@ -1,12 +1,12 @@
 import Banner from "../components/Banner/Banner";
-import TopFoods from "../components/TopFoods/TopFoods";
+import Foods from "../components/TopFoods/TopFoods";
 
 const Home = () => {
     return (
         <>
            <div className="">
              <Banner/>
-             <TopFoods/>
+             <Foods byPopularity={true}/>
            </div>
         </>
     );

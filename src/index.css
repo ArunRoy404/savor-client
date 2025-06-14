@@ -29,7 +29,11 @@ html[data-theme="dark"] {
   --color-btn-primary: white;
 }
 
-body{
+body {
   transition: background-color 1s ease;
   background: var(--color-accent);
+}
+
+page-title {
+  background-image: url('../public/bg.png');
 }
