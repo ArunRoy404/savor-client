@@ -144,7 +144,7 @@ const AddFoodForm = () => {
     };
 
     return (
-        <div className={` ${isDark ? 'bg-gray-800' : 'bg-white'} transition-colors duration-1000  drop-shadow-xl rounded-2xl`} >
+        <div className={` ${isDark ? 'bg-gray-800' : 'bg-white'}  drop-shadow-xl rounded-2xl`} >
             <div className="mx-auto rounded-xl shadow-md overflow-hidden">
                 <div className={`p-6 ${isDark ? 'bg-gray-900' : 'bg-gray-300'}`}>
                     <h1 className="text-2xl font-bold">Add New Menu Item</h1>
