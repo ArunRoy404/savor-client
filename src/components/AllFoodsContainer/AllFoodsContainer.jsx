@@ -20,7 +20,7 @@ const AllFoodsContainer = () => {
                     foodItems.map((food, i) => <FoodCard food={food} key={i} />)
                 }
             </div>
-            <Filter/>
+            {/* <Filter/> */}
         </div>
     );
 };

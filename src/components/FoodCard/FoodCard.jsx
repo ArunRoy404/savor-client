@@ -26,7 +26,7 @@ const FoodCard = ({ food }) => {
                 <div className="mt-3">
                     <Button
                         className='cursor-pointer w-full rounded-full px-5 py-2 text-sm md:text-md font-bold border border-gray-300 hover:border-orange-400 transition duration-300'
-                        to={'/'}>Details</Button>
+                        to={`/food-detail`}>Details</Button>
                 </div>
             </div>
         </div>
