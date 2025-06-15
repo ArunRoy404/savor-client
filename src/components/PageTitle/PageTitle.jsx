@@ -2,7 +2,7 @@
 const PageTitle = ({title, subtitle}) => {
     return (
         <div
-            className='mt-10 p-5 relative w-full h-60 md:h-100 mx-auto bg-no-repeat bg-center bg-cover rounded-2xl overflow-hidden'
+            className='mt-10 p-5 relative w-full h-50 md:h-70 mx-auto bg-no-repeat bg-center bg-cover rounded-2xl overflow-hidden'
             style={{ backgroundImage: "url('/food_bg.jpg')" }}>
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="relative w-full h-full flex items-center text-center justify-center text-white">

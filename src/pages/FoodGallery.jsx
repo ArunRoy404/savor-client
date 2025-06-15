@@ -1,0 +1,55 @@
+import React, { useEffect, useState } from 'react';
+import { foodItems } from '../utilities/dummyFoodsData';
+import PageTitle from '../components/PageTitle/PageTitle';
+
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
+const FoodGallery = () => {
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [images, setImages] = useState([])
+
+
+  useEffect(() => {
+    const initialImages = []
+    foodItems.forEach(food => initialImages.push({ src: food.image, alt: food.title }))
+    setImages(initialImages)
+  }, [])
+
+  return (
+    <>
+      <PageTitle
+        title={'A Visual Taste of Our Menu'}
+        subtitle={'Browse our most-loved dishes in a glance-ready gallery.'} />
+
+      {/* gallery  */}
+      <div className="py-20">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {images.map((img, i) => (
+            <div key={i} className="cursor-pointer rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+              <img
+                src={img.src}
+                alt={img.alt}
+                onClick={() => {
+                  setIndex(i);
+                  setOpen(true);
+                }}
+                className="w-full h-40 lg:h-60 object-cover"
+              />
+            </div>
+          ))}
+        </div>
+
+        <Lightbox
+          open={open}
+          index={index}
+          close={() => setOpen(false)}
+          slides={images}
+        />
+      </div>
+    </>
+  );
+};
+
+export default FoodGallery;

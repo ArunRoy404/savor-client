@@ -104,7 +104,7 @@ const PurchaseFood = () => {
                 </div>
 
 
-                <div className="mb-6 flex items-end justify-between">
+                <div className="mb-6 md:flex items-end justify-between">
                     <div>
                         {/* Buyer Info */}
                         <p className="block text-xl font-bold mb-2">Billing Address</p>
@@ -121,7 +121,7 @@ const PurchaseFood = () => {
                     </div>
 
                     {/* time */}
-                    <div>
+                    <div className='mt-2'>
                         <p className='text-sm font-semibold'>{purchaseDate}</p>
                     </div>
                 </div>

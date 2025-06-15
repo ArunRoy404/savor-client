@@ -4,6 +4,7 @@ import MainLayout from '../layouts/MainLayout';
 import AllFoods from '../pages/AllFoods';
 import FoodDetailPage from '../pages/FoodDetailPage';
 import PurchaseFood from '../pages/PurchaseFood';
+import FoodGallery from '../pages/FoodGallery';
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
             {
                 path:'/purchase',
                 element: <PurchaseFood/>
+            },
+            {
+                path: '/gallery',
+                element: <FoodGallery/>
             }
         ]
     }

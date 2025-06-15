@@ -1,7 +1,7 @@
 const foodItems = [
   {
     name: "Spaghetti Carbonara",
-    image: "https://img.freepik.com/free-photo/italian-pasta-spaghetti-with-meatballs-parmesan-cheese-black-plate-dark-rustic-wood-background-dinner-slow-food-concept_2829-4639.jpg?semt=ais_hybrid&w=740", 
+    image: "https://img.freepik.com/free-photo/italian-pasta-spaghetti-with-meatballs-parmesan-cheese-black-plate-dark-rustic-wood-background-dinner-slow-food-concept_2829-4639.jpg?semt=ais_hybrid&w=740",
     category: "Italian",
     description: "A classic Roman pasta dish made with egg yolks, pecorino cheese, pancetta, and black pepper.",
     servings: 4,
@@ -27,12 +27,12 @@ const foodItems = [
       {
         review: "Amazing flavor, simple but delicious!",
         rate: 5,
-        reviewerImage: "https://example.com/reviews/user1.jpg" 
+        reviewerImage: "https://example.com/reviews/user1.jpg"
       },
       {
         review: "Too rich for my taste, but authentic.",
         rate: 4,
-        reviewerImage: "https://example.com/reviews/user2.jpg" 
+        reviewerImage: "https://example.com/reviews/user2.jpg"
       }
     ],
     purchaseCount: 128,
@@ -43,7 +43,7 @@ const foodItems = [
   },
   {
     name: "Vegan Buddha Bowl",
-    image: "https://media.istockphoto.com/id/1416818056/photo/colourful-vegan-bowl-with-quinoa-and-sweet-potato.jpg?s=612x612&w=0&k=20&c=t1I58CqucV6bLRaa4iDy7PIVjnV8D9eWDjEsX9X-87k=", 
+    image: "https://media.istockphoto.com/id/1416818056/photo/colourful-vegan-bowl-with-quinoa-and-sweet-potato.jpg?s=612x612&w=0&k=20&c=t1I58CqucV6bLRaa4iDy7PIVjnV8D9eWDjEsX9X-87k=",
     category: "Vegan",
     description: "A colorful bowl filled with roasted vegetables, quinoa, avocado, and tahini dressing.",
     servings: 2,
@@ -69,12 +69,12 @@ const foodItems = [
       {
         review: "Perfect post-workout meal!",
         rate: 5,
-        reviewerImage: "https://example.com/reviews/user3.jpg" 
+        reviewerImage: "https://example.com/reviews/user3.jpg"
       },
       {
         review: "Could use more spice.",
         rate: 4,
-        reviewerImage: "https://example.com/reviews/user4.jpg" 
+        reviewerImage: "https://example.com/reviews/user4.jpg"
       }
     ],
     purchaseCount: 203,
@@ -85,7 +85,7 @@ const foodItems = [
   },
   {
     name: "Chicken Tikka Masala",
-    image: "https://www.spicebangla.com/wp-content/uploads/2024/04/chicken-tikka-masala-900x506.jpg", 
+    image: "https://www.spicebangla.com/wp-content/uploads/2024/04/chicken-tikka-masala-900x506.jpg",
     category: "Indian",
     description: "Grilled chicken in a creamy tomato-based curry sauce served with rice or naan.",
     servings: 3,
@@ -111,12 +111,12 @@ const foodItems = [
       {
         review: "So good I want to eat it every day!",
         rate: 5,
-        reviewerImage: "https://example.com/reviews/user5.jpg" 
+        reviewerImage: "https://example.com/reviews/user5.jpg"
       },
       {
         review: "A bit too spicy for me.",
         rate: 4,
-        reviewerImage: "https://example.com/reviews/user6.jpg" 
+        reviewerImage: "https://example.com/reviews/user6.jpg"
       }
     ],
     purchaseCount: 98,
@@ -127,7 +127,7 @@ const foodItems = [
   },
   {
     name: "Mango Smoothie",
-    image: "https://www.superhealthykids.com/wp-content/uploads/2019/12/Mango-Smoothie-Bowl-1-500x500.jpeg", 
+    image: "https://www.superhealthykids.com/wp-content/uploads/2019/12/Mango-Smoothie-Bowl-1-500x500.jpeg",
     category: "Beverage",
     description: "A refreshing smoothie made with fresh mango, banana, and coconut milk.",
     servings: 2,
@@ -153,12 +153,12 @@ const foodItems = [
       {
         review: "Summer in a glass!",
         rate: 5,
-        reviewerImage: "https://example.com/reviews/user7.jpg" 
+        reviewerImage: "https://example.com/reviews/user7.jpg"
       },
       {
         review: "Too sweet for my taste.",
         rate: 4,
-        reviewerImage: "https://example.com/reviews/user8.jpg" 
+        reviewerImage: "https://example.com/reviews/user8.jpg"
       }
     ],
     purchaseCount: 145,
@@ -169,7 +169,7 @@ const foodItems = [
   },
   {
     name: "Pad Thai",
-    image: "https://www.thespruceeats.com/thmb/7ZigBiPKOGoLCqZUAtKcq5xlJMQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/chicken-pad-thai-3217194-Hero_01-098e8b1085c24a90a97a5a4fce7070f3.jpg", 
+    image: "https://www.thespruceeats.com/thmb/7ZigBiPKOGoLCqZUAtKcq5xlJMQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/chicken-pad-thai-3217194-Hero_01-098e8b1085c24a90a97a5a4fce7070f3.jpg",
     category: "Thai",
     description: "Stir-fried rice noodles with shrimp, bean sprouts, peanuts, and tamarind sauce.",
     servings: 2,
@@ -195,12 +195,12 @@ const foodItems = [
       {
         review: "Authentic street-style flavor!",
         rate: 5,
-        reviewerImage: "https://example.com/reviews/user9.jpg" 
+        reviewerImage: "https://example.com/reviews/user9.jpg"
       },
       {
         review: "Could add more veggies.",
         rate: 4,
-        reviewerImage: "https://example.com/reviews/user10.jpg" 
+        reviewerImage: "https://example.com/reviews/user10.jpg"
       }
     ],
     purchaseCount: 112,
@@ -211,7 +211,7 @@ const foodItems = [
   },
   {
     name: "Avocado Toast",
-    image: "https://californiaavocado.com/wp-content/uploads/2020/07/California-Avocado-Toast-Three-Ways-768x532.jpeg", 
+    image: "https://californiaavocado.com/wp-content/uploads/2020/07/California-Avocado-Toast-Three-Ways-768x532.jpeg",
     category: "Breakfast",
     description: "Toasted sourdough topped with smashed avocado, chili flakes, and a poached egg.",
     servings: 1,
@@ -237,12 +237,12 @@ const foodItems = [
       {
         review: "Quick and satisfying breakfast!",
         rate: 5,
-        reviewerImage: "https://example.com/reviews/user11.jpg" 
+        reviewerImage: "https://example.com/reviews/user11.jpg"
       },
       {
         review: "Needs more salt.",
         rate: 3,
-        reviewerImage: "https://example.com/reviews/user12.jpg" 
+        reviewerImage: "https://example.com/reviews/user12.jpg"
       }
     ],
     purchaseCount: 89,
@@ -253,7 +253,7 @@ const foodItems = [
   },
   {
     name: "Grilled Salmon Salad",
-    image: "https://assets.sweat.com/html_body_blocks/images/000/005/931/original/Nicoise_Salad_with_Grilled_Salmon_1_enc94702a1dae88403112fcbb43f3629e7.jpg?1512951482", 
+    image: "https://assets.sweat.com/html_body_blocks/images/000/005/931/original/Nicoise_Salad_with_Grilled_Salmon_1_enc94702a1dae88403112fcbb43f3629e7.jpg?1512951482",
     category: "Salad",
     description: "Fresh greens topped with grilled salmon, cherry tomatoes, and balsamic vinaigrette.",
     servings: 2,
@@ -279,12 +279,12 @@ const foodItems = [
       {
         review: "Healthy and flavorful!",
         rate: 5,
-        reviewerImage: "https://example.com/reviews/user13.jpg" 
+        reviewerImage: "https://example.com/reviews/user13.jpg"
       },
       {
         review: "Salad was a bit small for the price.",
         rate: 4,
-        reviewerImage: "https://example.com/reviews/user14.jpg" 
+        reviewerImage: "https://example.com/reviews/user14.jpg"
       }
     ],
     purchaseCount: 107,
@@ -295,7 +295,7 @@ const foodItems = [
   },
   {
     name: "Chocolate Avocado Mousse",
-    image: "https://img.taste.com.au/KQLe5OBd/w720-h480-cfill-q80/taste/2016/11/dairy-free-avocado-chocolate-mousse-90600-1.jpeg", 
+    image: "https://img.taste.com.au/KQLe5OBd/w720-h480-cfill-q80/taste/2016/11/dairy-free-avocado-chocolate-mousse-90600-1.jpeg",
     category: "Dessert",
     description: "A creamy, healthy dessert made with avocado, cocoa powder, and maple syrup.",
     servings: 4,
@@ -321,12 +321,12 @@ const foodItems = [
       {
         review: "Tastes like real chocolate mousse!",
         rate: 5,
-        reviewerImage: "https://example.com/reviews/user15.jpg" 
+        reviewerImage: "https://example.com/reviews/user15.jpg"
       },
       {
         review: "Texture took some getting used to.",
         rate: 4,
-        reviewerImage: "https://example.com/reviews/user16.jpg" 
+        reviewerImage: "https://example.com/reviews/user16.jpg"
       }
     ],
     purchaseCount: 95,
@@ -337,7 +337,7 @@ const foodItems = [
   },
   {
     name: "Beef Tacos",
-    image: "https://images.getrecipekit.com/20230306234647-crispybeeftaco_sq.jpg?aspect_ratio=16:9&quality=90&", 
+    image: "https://images.getrecipekit.com/20230306234647-crispybeeftaco_sq.jpg?aspect_ratio=16:9&quality=90&",
     category: "Mexican",
     description: "Soft corn tortillas filled with seasoned beef, onions, cilantro, and lime.",
     servings: 4,
@@ -363,12 +363,12 @@ const foodItems = [
       {
         review: "Great for taco night!",
         rate: 5,
-        reviewerImage: "https://example.com/reviews/user17.jpg" 
+        reviewerImage: "https://example.com/reviews/user17.jpg"
       },
       {
         review: "Spice level could be adjustable.",
         rate: 4,
-        reviewerImage: "https://example.com/reviews/user18.jpg" 
+        reviewerImage: "https://example.com/reviews/user18.jpg"
       }
     ],
     purchaseCount: 134,
@@ -379,7 +379,7 @@ const foodItems = [
   },
   {
     name: "Oatmeal with Berries",
-    image: "https://thehealthytart.com/wp-content/uploads/2018/01/Porridge-with-Berries-and-Seeds_landscape.jpg", 
+    image: "https://thehealthytart.com/wp-content/uploads/2018/01/Porridge-with-Berries-and-Seeds_landscape.jpg",
     category: "Breakfast",
     description: "Warm oatmeal topped with mixed berries, honey, and a sprinkle of chia seeds.",
     servings: 1,
@@ -405,12 +405,12 @@ const foodItems = [
       {
         review: "Perfect start to the morning!",
         rate: 5,
-        reviewerImage: "https://example.com/reviews/user19.jpg" 
+        reviewerImage: "https://example.com/reviews/user19.jpg"
       },
       {
         review: "Could use more texture.",
         rate: 4,
-        reviewerImage: "https://example.com/reviews/user20.jpg" 
+        reviewerImage: "https://example.com/reviews/user20.jpg"
       }
     ],
     purchaseCount: 117,
@@ -418,7 +418,91 @@ const foodItems = [
     quantity: 0,
     origin: "Scandinavia",
     procedure: "Simmer oats in almond milk until thickened. Top with fresh berries, drizzle honey, and sprinkle chia seeds."
+  },
+  {
+    name: "Sushi Rolls",
+    image: "https://japanesetaste.com/cdn/shop/articles/how-to-make-makizushi-sushi-rolls-japanese-taste.jpg?v=1707913754&width=600",
+    category: "Japanese",
+    description: "Freshly made sushi rolls with sticky rice, seaweed, and a choice of fish or vegetables.",
+    servings: 2,
+    rating: 4.7,
+    nutritional: {
+      caloriesPerServing: 380,
+      macros: {
+        protein: "15g",
+        carbs: "50g",
+        fats: "10g"
+      },
+      allergens: ["Fish", "Shellfish"],
+      dietaryTags: ["Non-Vegetarian", "Gluten-Free"]
+    },
+    ingredients: [
+      "Sushi rice",
+      "Nori sheets",
+      "Fresh tuna or avocado",
+      "Cucumber",
+      "Soy sauce (optional)"
+    ],
+    reviews: [
+      {
+        review: "Fresh and delicious!",
+        rate: 5,
+        reviewerImage: "https://example.com/reviews/user21.jpg"
+      },
+      {
+        review: "Good portion size for two people.",
+        rate: 4,
+        reviewerImage: "https://example.com/reviews/user22.jpg"
+      }
+    ],
+    purchaseCount: 92,
+    price: 18.99,
+    quantity: 14,
+    origin: "Japan",
+    procedure: "Prepare sushi rice and spread on nori. Add fillings like fish or veggies. Roll tightly and slice into pieces. Serve with soy sauce."
+  },
+  {
+    name: "Falafel Wrap",
+    image: "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/falafel_wraps_59124_16x9.jpg",
+    category: "Middle Eastern",
+    description: "Crispy falafel wrapped in warm pita with fresh veggies and tahini sauce.",
+    servings: 1,
+    rating: 4.6,
+    nutritional: {
+      caloriesPerServing: 420,
+      macros: {
+        protein: "12g",
+        carbs: "55g",
+        fats: "14g"
+      },
+      allergens: [],
+      dietaryTags: ["Vegan", "Vegetarian"]
+    },
+    ingredients: [
+      "Chickpeas",
+      "Onion",
+      "Garlic",
+      "Parsley",
+      "Whole wheat pita"
+    ],
+    reviews: [
+      {
+        review: "Great vegan option with bold flavors!",
+        rate: 5,
+        reviewerImage: "https://example.com/reviews/user23.jpg"
+      },
+      {
+        review: "Could use extra dressing.",
+        rate: 4,
+        reviewerImage: "https://example.com/reviews/user24.jpg"
+      }
+    ],
+    purchaseCount: 105,
+    price: 8.49,
+    quantity: 25,
+    origin: "Middle East",
+    procedure: "Blend chickpeas with herbs and spices. Form into balls and fry until golden. Stuff into pita with lettuce, tomatoes, and tahini sauce."
   }
 ];
 
-export {foodItems};
+export { foodItems };
