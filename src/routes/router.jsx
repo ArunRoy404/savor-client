@@ -5,6 +5,7 @@ import AllFoods from '../pages/AllFoods';
 import FoodDetailPage from '../pages/FoodDetailPage';
 import PurchaseFood from '../pages/PurchaseFood';
 import FoodGallery from '../pages/FoodGallery';
+import AddFoodPage from '../pages/AddFoodPage';
 
 
 const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path: '/gallery',
                 element: <FoodGallery/>
+            },
+            {
+                path:'add-foods',
+                element: <AddFoodPage/>
             }
         ]
     }
