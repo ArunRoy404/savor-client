@@ -43,7 +43,7 @@ const FoodDetail = ({food}) => {
 
             {/* Stock */}
             <div>
-                <span className=" text-gray-500">In stock: {food.quantity}</span>
+                <span className=" text-gray-400 font-semibold">In stock: {food.quantity}</span>
             </div>
         </div>
     );

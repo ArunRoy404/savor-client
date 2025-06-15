@@ -32,6 +32,7 @@ const FoodDetailPage = () => {
           <FoodDetail food={food} />
           {/* Purchase Button */}
           <Button
+            to={'/purchase'}
             className="cursor-pointer mt-6 w-full py-3 px-6 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
           >
             Checkout
@@ -45,7 +46,7 @@ const FoodDetailPage = () => {
         <Ingredients ingredients={food.ingredients} />
 
         {/* Nutritional Info */}
-        <Nutrition nutritional={food.nutritional}/>
+        <Nutrition nutritional={food.nutritional} />
       </div>
 
       {/* Procedure */}
@@ -58,7 +59,7 @@ const FoodDetailPage = () => {
       <div className="mt-12">
         <h3 className="text-xl font-semibold mb-4">Customer Reviews</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {food.reviews.map((review, i) => <ReviewCard key={i} review={review}/> )}
+          {food.reviews.map((review, i) => <ReviewCard key={i} review={review} />)}
         </div>
       </div>
     </div>
