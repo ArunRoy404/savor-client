@@ -1,11 +1,15 @@
 import { FaStar } from "react-icons/fa";
 import Button from "../UI/Button";
 import { FaRegHeart } from "react-icons/fa";
+import useThemeContext from "../../custom_contexts/useThemeContext";
 
 const FoodCard = ({ food }) => {
+
+    const {isDark} = useThemeContext()
+
     const { image, name, purchaseCount, nutritional, rating, price, quantity } = food
     return (
-        <div className="z-10 overflow-hidden text-left flex-shrink-0 relative text-black bg-white rounded-2xl hover:drop-shadow-lg transition duration-400">
+        <div className={`${isDark ?'bg-gray-900' :'bg-white'} z-10 overflow-hidden text-left flex-shrink-0 relative  rounded-2xl hover:drop-shadow-lg transition duration-400`}>
             <img className=" h-40 min-w-70 w-full md:h-50 object-cover" src={image} alt="" />
             <FaRegHeart className="absolute top-5 right-5 cursor-pointer" color="orange" size={30} />
             <div className="p-5">
