@@ -35,7 +35,7 @@ const FoodGallery = () => {
                   setIndex(i);
                   setOpen(true);
                 }}
-                className="w-full h-40 lg:h-60 object-cover"
+                className="hover:scale-105 transition duration-300 w-full h-40 lg:h-60 object-cover"
               />
             </div>
           ))}

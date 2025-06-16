@@ -2,8 +2,9 @@ import NavAction from './NavAction';
 import ThemeToggle from '../Toggle/ThemeToggle';
 import Platter from '../Platter/Platter';
 import Avatar from './Avatar';
-import LoginButton from '../LoginButton/LoginButton';
+import LoginButton from '../UI/LoginButton';
 import NavDropDown from './NavDropDown';
+import LogoutButton from '../UI/LogoutButton';
 
 const NavActions = () => {
     return (
@@ -26,6 +27,11 @@ const NavActions = () => {
             {/* login button  */}
             <NavAction>
                 <LoginButton />
+            </NavAction>
+
+            {/* logout button  */}
+            <NavAction>
+                <LogoutButton/>
             </NavAction>
 
             {/* nav dropdown  */}

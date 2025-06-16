@@ -187,8 +187,14 @@ const AddFoodForm = () => {
                         {activeSection === "basic" && (
                             <div className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className='border row-span-4 overflow-hidden rounded-lg'>
-                                        <img src={foodData.image} className="object-cover h-35 md:h-92 w-full object-center" alt="" />
+                                    <div className='border border-gray-300 row-span-4 overflow-hidden rounded-lg'>
+                                        {
+                                            foodData?.image
+                                                ? <img src={foodData.image} className="object-cover h-35 md:h-92 w-full object-center" alt="" />
+                                                : <div className="h-35 md:h-92 w-full text-xl font-bold flex items-center justify-center"> Preview Image </div>
+                                        }
+
+
                                     </div>
                                     <div>
                                         <label className="block  font-medium mb-2">Dish Name*</label>
