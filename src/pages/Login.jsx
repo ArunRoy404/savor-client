@@ -26,7 +26,7 @@ const Login = () => {
         const password = e.target.password.value
 
         setSuccess('')
-        setError('')``
+        setError('')
         setIsLogInBtnLoading(true)
 
         logIn(email, password)
