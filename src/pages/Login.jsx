@@ -25,7 +25,7 @@ const Login = () => {
         // const password = e.target.password.value
 
         setSuccess('')
-        setError('')
+        setError('')``
         setIsLogInBtnLoading(true)
 
         // logIn(email, password)
@@ -77,7 +77,7 @@ const Login = () => {
                     />
                 </div>
 
-                <div className='mx-auto'>
+                <div className='mx-auto lg:mx-0'>
                     {/* Login Card */}
                     <div className="w-full md:w-auto text-white">
                         <div className="card md:w-lg shrink-0 ">
