@@ -1,14 +1,17 @@
 import { IoSearch } from "react-icons/io5";
 
-const Search = () => {
+const Search = ({ searchText, handleSearch}) => {
     return (
         <div className="relative w-full max-w-md">
             <input
                 type="text"
                 placeholder="Search food..."
+                value={searchText}
+                onChange={handleSearch}
                 className="w-full px-5 py-3 rounded-lg bg-white text-black placeholder-gray-400 
                    border border-gray-300 focus:outline-none focus:border-orange-400 
                    transition-all duration-300 ease-in-out"
+
             />
             <button
                 type="submit"

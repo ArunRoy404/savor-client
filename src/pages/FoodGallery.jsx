@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { foodItems } from '../utilities/dummyFoodsData';
+import { useEffect, useState } from 'react';
 import PageTitle from '../components/PageTitle/PageTitle';
-
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import { useQuery } from '@tanstack/react-query';
+import useDatabaseContext from '../custom_contexts/UseDatabaseContext';
+import Loader from '../components/Loader/Loader';
 
 const FoodGallery = () => {
   const [open, setOpen] = useState(false);
@@ -11,12 +12,23 @@ const FoodGallery = () => {
   const [images, setImages] = useState([])
 
 
-  useEffect(() => {
-    const initialImages = []
-    foodItems.forEach(food => initialImages.push({ src: food.image, alt: food.title }))
-    setImages(initialImages)
-  }, [])
+  const { getFoods } = useDatabaseContext()
+  const { isPending, error, data } = useQuery({
+    queryKey: ['allFoods'],
+    queryFn: () => getFoods().then(res => res.data)
+  })
 
+  useEffect(() => {
+    if (data) {
+      const initialImages = []
+      data.forEach(food => initialImages.push({ src: food.image, alt: food.title }))
+      setImages(initialImages)
+    }
+  }, [data])
+
+
+  if (isPending) return <Loader />
+  if (error) return <Error />
   return (
     <>
       <PageTitle
