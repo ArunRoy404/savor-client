@@ -1,15 +1,15 @@
 import { Link } from "react-router";
-// import useDatabaseContext from "../../CustomContexts/UseDatabaseContext";
+import useAuthContext from "../../custom_contexts/UseAuthContext";
 
 const Avatar = () => {
 
-    // const { user, logOutUser } = useDatabaseContext()
+    const { firebaseUser } = useAuthContext()
 
     return (
         <div className="dropdown dropdown-end dropdown-hover">
             <div tabIndex={0} role="button" className="avatar">
                 <div className="w-7 rounded-full">
-                    {/* <img src={user?.photoURL} /> */}
+                    <img src={firebaseUser?.photoURL} />
                     <img src='https://i.ibb.co/sdcY1StY/unnamed.png' />
                 </div>
             </div>

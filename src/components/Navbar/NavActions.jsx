@@ -5,8 +5,12 @@ import Avatar from './Avatar';
 import LoginButton from '../UI/LoginButton';
 import NavDropDown from './NavDropDown';
 import LogoutButton from '../UI/LogoutButton';
+import useAuthContext from '../../custom_contexts/UseAuthContext';
 
 const NavActions = () => {
+
+    const { firebaseUser } = useAuthContext()
+
     return (
         <div className="flex items-center md:navbar-end space-x-2 ">
             {/* theme toggle  */}
@@ -19,20 +23,11 @@ const NavActions = () => {
                 <Platter />
             </NavAction> */}
 
-            {/* avatar  */}
-            <NavAction>
-                <Avatar />
-            </NavAction>
-
-            {/* login button  */}
-            <NavAction>
-                <LoginButton />
-            </NavAction>
-
-            {/* logout button  */}
-            <NavAction>
-                <LogoutButton/>
-            </NavAction>
+            {
+                firebaseUser
+                    ? <><NavAction><Avatar /></NavAction> <NavAction><LogoutButton /></NavAction></>
+                    : <NavAction><LoginButton /></NavAction>
+            }
 
             {/* nav dropdown  */}
             <div className='lg:hidden'>
