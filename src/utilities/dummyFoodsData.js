@@ -39,7 +39,9 @@ const foodItems = [
     price: 14.99,
     quantity: 10,
     origin: "Italy",
-    procedure: "Cook spaghetti in salted water. Sauté cubed pancetta until crispy. Whisk egg yolks with pecorino and pepper. Toss hot pasta into the pan with pancetta, then mix in egg sauce off heat."
+    procedure: "Cook spaghetti in salted water. Sauté cubed pancetta until crispy. Whisk egg yolks with pecorino and pepper. Toss hot pasta into the pan with pancetta, then mix in egg sauce off heat.",
+    ownerName: "Arun Roy",
+    ownerEmail: "hello@world.com",
   },
   {
     name: "Vegan Buddha Bowl",
@@ -81,7 +83,9 @@ const foodItems = [
     price: 12.49,
     quantity: 5,
     origin: "USA",
-    procedure: "Roast sweet potatoes with olive oil. Cook quinoa. Layer greens, quinoa, veggies, and avocado. Drizzle with homemade tahini dressing."
+    procedure: "Roast sweet potatoes with olive oil. Cook quinoa. Layer greens, quinoa, veggies, and avocado. Drizzle with homemade tahini dressing.",
+    ownerName: "Arun Roy",
+    ownerEmail: "hello@world.com",
   },
   {
     name: "Chicken Tikka Masala",
@@ -123,7 +127,9 @@ const foodItems = [
     price: 16.99,
     quantity: 7,
     origin: "India",
-    procedure: "Marinate chicken in yogurt and spices, grill until charred. Sauté onions, garlic, ginger, add tomato puree and simmer. Add chicken and cream, finish with garam masala."
+    procedure: "Marinate chicken in yogurt and spices, grill until charred. Sauté onions, garlic, ginger, add tomato puree and simmer. Add chicken and cream, finish with garam masala.",
+    ownerName: "Arun Roy",
+    ownerEmail: "hello@world.com",
   },
   {
     name: "Mango Smoothie",
@@ -165,7 +171,9 @@ const foodItems = [
     price: 7.99,
     quantity: 9,
     origin: "Tropical regions",
-    procedure: "Blend frozen mango chunks, banana, coconut milk, and ice until smooth. Sweeten with honey if needed."
+    procedure: "Blend frozen mango chunks, banana, coconut milk, and ice until smooth. Sweeten with honey if needed.",
+    ownerName: "Arun Roy",
+    ownerEmail: "hello@world.com",
   },
   {
     name: "Pad Thai",
@@ -207,7 +215,9 @@ const foodItems = [
     price: 13.99,
     quantity: 16,
     origin: "Thailand",
-    procedure: "Soak noodles in warm water. Stir-fry tofu, add beaten egg, then shrimp. Add noodles, bean sprouts, and tamarind sauce. Garnish with crushed peanuts and lime."
+    procedure: "Soak noodles in warm water. Stir-fry tofu, add beaten egg, then shrimp. Add noodles, bean sprouts, and tamarind sauce. Garnish with crushed peanuts and lime.",
+    ownerName: "Arun Roy",
+    ownerEmail: "hello@world.com",
   },
   {
     name: "Avocado Toast",
@@ -249,7 +259,9 @@ const foodItems = [
     price: 9.49,
     quantity: 3,
     origin: "USA",
-    procedure: "Toast bread, mash avocado on top, add poached egg, sprinkle chili flakes, and drizzle lemon juice."
+    procedure: "Toast bread, mash avocado on top, add poached egg, sprinkle chili flakes, and drizzle lemon juice.",
+    ownerName: "Arun Roy",
+    ownerEmail: "hello@world.com",
   },
   {
     name: "Grilled Salmon Salad",
@@ -291,7 +303,9 @@ const foodItems = [
     price: 17.99,
     quantity: 21,
     origin: "France",
-    procedure: "Grill salmon with seasoning. Toss greens with balsamic dressing. Top with salmon, tomatoes, and cucumber slices."
+    procedure: "Grill salmon with seasoning. Toss greens with balsamic dressing. Top with salmon, tomatoes, and cucumber slices.",
+    ownerName: "Arun Roy",
+    ownerEmail: "hello@world.com",
   },
   {
     name: "Chocolate Avocado Mousse",
@@ -333,7 +347,9 @@ const foodItems = [
     price: 8.99,
     quantity: 8,
     origin: "USA",
-    procedure: "Blend avocado, cocoa, maple syrup, and vanilla until smooth. Chill before serving."
+    procedure: "Blend avocado, cocoa, maple syrup, and vanilla until smooth. Chill before serving.",
+    ownerName: "Arun Roy",
+    ownerEmail: "hello@world.com",
   },
   {
     name: "Beef Tacos",
@@ -375,7 +391,9 @@ const foodItems = [
     price: 15.49,
     quantity: 6,
     origin: "Mexico",
-    procedure: "Brown beef with onion and taco seasoning. Warm tortillas, fill with meat, add cilantro, and squeeze lime over top."
+    procedure: "Brown beef with onion and taco seasoning. Warm tortillas, fill with meat, add cilantro, and squeeze lime over top.",
+    ownerName: "Arun Roy",
+    ownerEmail: "hello@world.com",
   },
   {
     name: "Oatmeal with Berries",
@@ -417,7 +435,9 @@ const foodItems = [
     price: 6.99,
     quantity: 0,
     origin: "Scandinavia",
-    procedure: "Simmer oats in almond milk until thickened. Top with fresh berries, drizzle honey, and sprinkle chia seeds."
+    procedure: "Simmer oats in almond milk until thickened. Top with fresh berries, drizzle honey, and sprinkle chia seeds.",
+    ownerName: "Arun Roy",
+    ownerEmail: "hello@world.com",
   },
   {
     name: "Sushi Rolls",
@@ -459,7 +479,9 @@ const foodItems = [
     price: 18.99,
     quantity: 14,
     origin: "Japan",
-    procedure: "Prepare sushi rice and spread on nori. Add fillings like fish or veggies. Roll tightly and slice into pieces. Serve with soy sauce."
+    procedure: "Prepare sushi rice and spread on nori. Add fillings like fish or veggies. Roll tightly and slice into pieces. Serve with soy sauce.",
+    ownerName: "Arun Roy",
+    ownerEmail: "hello@world.com",
   },
   {
     name: "Falafel Wrap",
@@ -501,7 +523,9 @@ const foodItems = [
     price: 8.49,
     quantity: 25,
     origin: "Middle East",
-    procedure: "Blend chickpeas with herbs and spices. Form into balls and fry until golden. Stuff into pita with lettuce, tomatoes, and tahini sauce."
+    procedure: "Blend chickpeas with herbs and spices. Form into balls and fry until golden. Stuff into pita with lettuce, tomatoes, and tahini sauce.",
+    ownerName: "Arun Roy",
+    ownerEmail: "hello@world.com",
   }
 ];
 

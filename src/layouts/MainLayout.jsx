@@ -9,7 +9,7 @@ const MainLayout = () => {
         <>
             <Navbar/>
             <Toaster position="top-center" reverseOrder={false}></Toaster>
-            <div className="px-3 md:px-0 container mx-auto">
+            <div className="px-3 md:px-0 container mx-auto min-h-[calc(100vh-64px)]">
                 <Outlet />
             </div>
             <Footer/>

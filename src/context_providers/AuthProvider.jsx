@@ -51,7 +51,6 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             if (currentUser) {
                 setFirebaseUser({ ...currentUser })
-                console.log(currentUser);
                 reloadUser()
             } else {
                 setFirebaseUser(null)
