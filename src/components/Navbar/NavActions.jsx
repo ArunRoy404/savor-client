@@ -15,9 +15,9 @@ const NavActions = () => {
             </NavAction>
 
             {/* Platter  */}
-            <NavAction>
+            {/* <NavAction>
                 <Platter />
-            </NavAction>
+            </NavAction> */}
 
             {/* avatar  */}
             <NavAction>

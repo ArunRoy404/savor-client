@@ -21,7 +21,9 @@ const TopFoods = () => {
             </p>
             <TopFoodsContainer />
             <div className="mt-10">
-                <Button className="cursor-pointer rounded-full px-5 py-2 text-sm md:text-md font-bold border bg-black text-white border-black hover:bg-white  hover:text-black transition duration-300">
+                <Button
+                    to={'/all-foods'}
+                    className="cursor-pointer rounded-full px-5 py-2 text-sm md:text-md font-bold border bg-black text-white border-black hover:bg-white  hover:text-black transition duration-300">
                     Show All
                 </Button>
             </div>

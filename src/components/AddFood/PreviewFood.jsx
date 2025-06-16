@@ -56,16 +56,16 @@ const PreviewFood = () => {
           alt={foodData.name}
           className="w-full h-40 md:h-72 object-cover"
         />
-        <div className="p-6 bg-white">
+        <div className="p-6">
           <div className="mb-2">
             <h2 className="text-2xl font-bold">
               {foodData.name}
             </h2>
           </div>
 
-          <p className="text-gray-700 italic mb-2">{foodData.description}</p>
+          <p className="opacity-80 italic mb-2">{foodData.description}</p>
 
-          <div className="text-sm text-gray-600 my-4">
+          <div className="text-sm opacity-60 my-4">
             <span className="font-bold">Category:</span> {foodData.category} |
             <span className="ml-2 font-bold">Origin:</span> {foodData.origin} |
             <span className="ml-2 font-bold">Servings:</span> {foodData.servings}
@@ -73,7 +73,7 @@ const PreviewFood = () => {
 
           <div className="mb-4">
             <h4 className="font-semibold  mb-1">Nutritional Info (per serving)</h4>
-            <ul className="text-sm text-gray-700">
+            <ul className="text-sm opacity-80">
               <li>Calories: {foodData.nutritional.caloriesPerServing}</li>
               <li>Protein: {foodData.nutritional.macros.protein}</li>
               <li>Carbs: {foodData.nutritional.macros.carbs}</li>
@@ -97,7 +97,7 @@ const PreviewFood = () => {
 
           <div className="mb-4">
             <h4 className="font-semibold  mb-1">Ingredients</h4>
-            <ul className="list-disc list-inside text-sm text-gray-700">
+            <ul className="list-disc list-inside text-sm opacity-80">
               {foodData.ingredients.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
@@ -106,7 +106,7 @@ const PreviewFood = () => {
 
           <div className="mb-4">
             <h4 className="font-semibold  mb-1">Procedure</h4>
-            <p className="text-sm text-gray-700 leading-relaxed">{foodData.procedure}</p>
+            <p className="text-sm opacity-80 leading-relaxed">{foodData.procedure}</p>
           </div>
         </div>
       </div>

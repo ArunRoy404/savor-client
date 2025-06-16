@@ -4,7 +4,7 @@ import AllergenTag from "./AllergenTag";
 
 const FoodDetail = ({food}) => {
     return (
-        <div className="space-y-5">
+        <div className="space-y-4">
             <h1 className="text-3xl font-bold">{food.name}</h1>
             <p className="md:text-lg text-gray-400 font-semibold">{food.description}</p>
 
@@ -43,7 +43,8 @@ const FoodDetail = ({food}) => {
 
             {/* Stock */}
             <div>
-                <span className=" text-gray-400 font-semibold">In stock: {food.quantity}</span>
+                <p className=" text-gray-400 font-semibold">Total Purchased: {food.purchaseCount}</p>
+                <p className=" text-gray-400 font-semibold">In stock: {food.quantity}</p>
             </div>
         </div>
     );

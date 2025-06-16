@@ -80,7 +80,7 @@ const Login = () => {
                 <div className='mx-auto lg:mx-0'>
                     {/* Login Card */}
                     <div className="w-full md:w-auto text-white">
-                        <div className="card md:w-lg shrink-0 ">
+                        <div className="card w-sm md:w-lg shrink-0 ">
                             <div className="card-body">
                                 <h1 className='text-4xl font-bold mb-3'>Log In</h1>
                                 <form onSubmit={handleLogin} className="fieldset border-b-2 border-gray-400 border-dashed">
