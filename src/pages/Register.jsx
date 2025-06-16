@@ -2,17 +2,16 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-// import useAuthContext from '../CustomContexts/UseAuthContext';
-// import { notifyError, notifySuccess } from '../utilities/notify';
-// import LoginContent from '../Components/LoginContent';
-// import isValidPassword from '../utilities/PassValidation';
 import { FcGoogle } from "react-icons/fc";
 import bg from '/login-background.jpg'
 import Navbar from '../components/Navbar/Navbar';
+import { notifyError, notifySuccess } from '../utilities/notification';
+import useAuthContext from '../custom_contexts/UseAuthContext';
+import isValidPassword from '../utilities/PassValidation';
 
 
 const Login = () => {
-    // const { createUser, updateUserProfile, googleLogIn, reloadUser } = useAuthContext()
+    const { createUser, updateUserProfile, googleLogIn, reloadUser } = useAuthContext()
 
     const [success, setSuccess] = useState('')
     const [error, setError] = useState('')
@@ -21,8 +20,8 @@ const Login = () => {
     const [isGoogleBtnLoading, setIsGoogleBtnLoading] = useState(false)
 
 
-    // const navigate = useNavigate()
-    // const location = useLocation()
+    const navigate = useNavigate()
+    const location = useLocation()
 
     const handleCreateUser = e => {
         e.preventDefault()
@@ -37,31 +36,31 @@ const Login = () => {
         isValidPassword(password)
             .then(() => {
                 setISBtnLoading(true)
-                // createUser(email, password)
-                //     .then(() => {
-                //         const updateInfo = {
-                //             displayName: userName,
-                //             photoURL: photoURL
-                //         }
-                //         updateUserProfile(updateInfo)
-                //             .then(() => {
-                //                 setSuccess('Account created successfully')
-                //                 notifySuccess("Account created successfully")
-                //                 reloadUser()
-                //                 navigate(location.state || '/')
-                //             })
-                //             .catch(error => {
-                //                 setError(error.code)
-                //                 notifyError('Registration failed')
-                //             })
-                //     })
-                //     .catch(error => {
-                //         setError(error.code)
-                //         notifyError('Registration failed')
-                //     })
-                //     .finally(() => {
-                //         setISBtnLoading(false)
-                //     })
+                createUser(email, password)
+                    .then(() => {
+                        const updateInfo = {
+                            displayName: userName,
+                            photoURL: photoURL
+                        }
+                        updateUserProfile(updateInfo)
+                            .then(() => {
+                                setSuccess('Account created successfully')
+                                notifySuccess("Account created successfully")
+                                reloadUser()
+                                navigate(location.state || '/')
+                            })
+                            .catch(error => {
+                                setError(error.code)
+                                notifyError('Registration failed')
+                            })
+                    })
+                    .catch(error => {
+                        setError(error.code)
+                        notifyError('Registration failed')
+                    })
+                    .finally(() => {
+                        setISBtnLoading(false)
+                    })
             })
             .catch(error => {
                 setError(error.message)
@@ -73,19 +72,19 @@ const Login = () => {
         setError('')
         setIsGoogleBtnLoading(true)
 
-        // googleLogIn()
-        //     .then(() => {
-        //         setSuccess('Login Successful')
-        //         notifySuccess('Login Successful')
-        //         navigate(location.state || '/')
-        //     })
-        //     .catch(error => {
-        //         setError(error.code)
-        //         notifyError("Login failed!")
-        //     })
-        //     .finally(() => {
-        //         setIsGoogleBtnLoading(false)
-        //     })
+        googleLogIn()
+            .then(() => {
+                setSuccess('Login Successful')
+                notifySuccess('Login Successful')
+                navigate(location.state || '/')
+            })
+            .catch(error => {
+                setError(error.code)
+                notifyError("Login failed!")
+            })
+            .finally(() => {
+                setIsGoogleBtnLoading(false)
+            })
     }
 
     return (
@@ -132,7 +131,7 @@ const Login = () => {
                                     </div>
 
                                     <p className='text-green-400' >{success}</p>
-                                    <p className='text-red-400' >{error}</p>
+                                    <p className='text-red-400 font-bold' >{error}</p>
 
                                     <button type='submit' className='mt-5 mb-3 btn btn-neutral shadow-none rounded-sm text-black bg-white/50 hover:bg-white/70 border-black/40 ' disabled={isBtnLoading}>
                                         {isBtnLoading && <span className="loading loading-spinner"></span>}

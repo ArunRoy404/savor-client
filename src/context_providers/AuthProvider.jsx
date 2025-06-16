@@ -8,7 +8,7 @@ const AuthProvider = ({ children }) => {
     const [firebaseUser, setFirebaseUser] = useState(null)
     const [isUserLoading, setIsUserLoading] = useState(true)
     const googleProvider = new GoogleAuthProvider()
-    
+
 
     const createUser = (email, password) => {
         setIsUserLoading(true)
@@ -51,6 +51,7 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             if (currentUser) {
                 setFirebaseUser({ ...currentUser })
+                console.log(currentUser);
                 reloadUser()
             } else {
                 setFirebaseUser(null)
@@ -64,7 +65,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     const firebase = {
-        loggedUser: firebaseUser,
+        firebaseUser,
         isUserLoading,
         googleLogIn,
         createUser,
