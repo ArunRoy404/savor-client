@@ -1,53 +1,7 @@
 import AllergenTag from "../FoodDetail/AllergenTag";
 import DietTag from "../FoodDetail/DietTag";
 
-const foodData = {
-  name: "Spaghetti Carbonara",
-  image:
-    "https://img.freepik.com/free-photo/italian-pasta-spaghetti-with-meatballs-parmesan-cheese-black-plate-dark-rustic-wood-background-dinner-slow-food-concept_2829-4639.jpg?semt=ais_hybrid&w=740",
-  category: "Italian",
-  description:
-    "A classic Roman pasta dish made with egg yolks, pecorino cheese, pancetta, and black pepper.",
-  servings: 4,
-  rating: 4.6,
-  nutritional: {
-    caloriesPerServing: 650,
-    macros: {
-      protein: "25g",
-      carbs: "70g",
-      fats: "22g",
-    },
-    allergens: ["Dairy", "Eggs"],
-    dietaryTags: ["Gluten", "Dairy"],
-  },
-  ingredients: [
-    "400g spaghetti",
-    "150g pancetta",
-    "3 large egg yolks",
-    "50g grated pecorino Romano",
-    "Freshly ground black pepper",
-  ],
-  reviews: [
-    {
-      review: "Amazing flavor, simple but delicious!",
-      rate: 5,
-      reviewerImage: "https://example.com/reviews/user1.jpg",
-    },
-    {
-      review: "Too rich for my taste, but authentic.",
-      rate: 4,
-      reviewerImage: "https://example.com/reviews/user2.jpg",
-    },
-  ],
-  purchaseCount: 128,
-  price: 14.99,
-  quantity: 10,
-  origin: "Italy",
-  procedure:
-    "Cook spaghetti in salted water. Sauté cubed pancetta until crispy. Whisk egg yolks with pecorino and pepper. Toss hot pasta into the pan with pancetta, then mix in egg sauce off heat.",
-};
-
-const PreviewFood = () => {
+const PreviewFood = ({foodData}) => {
   return (
     <div className="">
       <div className="overflow-hidden">

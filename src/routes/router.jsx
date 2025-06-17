@@ -11,6 +11,7 @@ import MyFoods from '../pages/MyFoods';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -31,24 +32,24 @@ const router = createBrowserRouter([
                 element: <FoodDetailPage />
             },
             {
-                path: '/food/purchase/:id',
-                element: <PurchaseFood />
-            },
-            {
                 path: '/gallery',
                 element: <FoodGallery />
             },
             {
+                path: '/food/purchase/:id',
+                element: <PrivateRoute><PurchaseFood /></PrivateRoute>
+            },
+            {
                 path: '/add-foods',
-                element: <AddFoodPage />
+                element: <PrivateRoute> <AddFoodPage /></PrivateRoute>
             },
             {
                 path: '/my-orders',
-                element: <MyOrders />
+                element: <PrivateRoute><MyOrders /></PrivateRoute>
             },
             {
                 path: '/my-foods',
-                element: <MyFoods />
+                element: <PrivateRoute><MyFoods /></PrivateRoute>
             }
         ]
     },
@@ -58,11 +59,11 @@ const router = createBrowserRouter([
     },
     {
         path: '/register',
-        element: <Register/>
+        element: <Register />
     },
     {
         path: '/*',
-        element: <ErrorPage/>
+        element: <ErrorPage />
     }
 ])
 

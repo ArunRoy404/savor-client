@@ -156,17 +156,24 @@ const AddFoodForm = () => {
 
     const handleAddFood = (e) => {
         e.preventDefault();
-        addFoodPromise(foodData)
-            .then(res => {
-                if (res.data.insertedId) {
-                    notifySuccess("Food added Successfully")
-                } else {
-                    notifyWarn("Food add unsuccessful")
-                }
-            })
-            .catch(err => {
-                notifyError(err.message)
-            })
+
+        const sections = ["basic", "nutrition", "ingredients", "preview"];
+        const currentIndex = sections.indexOf(activeSection);
+        setActiveSection(sections[currentIndex + 1]);
+
+        if (activeSection === "preview") [
+            addFoodPromise(foodData)
+                .then(res => {
+                    if (res.data.insertedId) {
+                        notifySuccess("Food added Successfully")
+                    } else {
+                        notifyWarn("Food add unsuccessful")
+                    }
+                })
+                .catch(err => {
+                    notifyError(err.message)
+                })
+        ]
     };
 
     return (
@@ -247,7 +254,7 @@ const AddFoodForm = () => {
                                         />
                                     </div>
                                     <div>
-                                        <label className="block  font-medium mb-2">Origin/Cuisine</label>
+                                        <label className="block  font-medium mb-2">Origin/Cuisine*</label>
                                         <input
                                             type="text"
                                             name="origin"
@@ -255,6 +262,7 @@ const AddFoodForm = () => {
                                             onChange={handleChange}
                                             className="w-full px-4 py-2 border border-gray-300 rounded-lg "
                                             placeholder="e.g. Italy"
+                                            required
                                         />
                                     </div>
 
@@ -287,13 +295,14 @@ const AddFoodForm = () => {
 
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                     <div>
-                                        <label className="block  font-medium mb-2">Servings</label>
+                                        <label className="block  font-medium mb-2">Servings*</label>
                                         <input
                                             type="number"
                                             name="servings"
                                             value={foodData.servings}
                                             onChange={handleChange}
                                             min="1"
+                                            required
                                             className="w-full px-4 py-2 border border-gray-300 rounded-lg "
                                         />
                                     </div>
@@ -311,13 +320,14 @@ const AddFoodForm = () => {
                                         />
                                     </div>
                                     <div>
-                                        <label className="block  font-medium mb-2">Quantity in Stock</label>
+                                        <label className="block  font-medium mb-2">Quantity in Stock*</label>
                                         <input
                                             type="number"
                                             name="quantity"
                                             value={foodData.quantity}
                                             onChange={handleChange}
                                             min="0"
+                                            required
                                             className="w-full px-4 py-2 border border-gray-300 rounded-lg "
                                         />
                                     </div>
@@ -344,7 +354,6 @@ const AddFoodForm = () => {
                                             step="0.01"
                                             disabled
                                             className="opacity-70 cursor-not-allowed w-full px-4 py-2 border border-gray-300 rounded-lg "
-                                            required
                                         />
                                     </div>
                                 </div>
@@ -525,13 +534,14 @@ const AddFoodForm = () => {
                                 </div>
                             </div>
                         )}
-                        {activeSection === "preview" && <PreviewFood />}
+                        {activeSection === "preview" && <PreviewFood foodData={foodData} />}
                     </div>
 
                     <div className="flex justify-between border-t border-gray-200 pt-6">
                         <button
                             type="button"
-                            onClick={() => {
+                            onClick={(e) => {
+                                e.preventDefault()
                                 if (activeSection === "basic") return;
                                 const sections = ["basic", "nutrition", "ingredients", "preview"];
                                 const currentIndex = sections.indexOf(activeSection);
@@ -542,26 +552,13 @@ const AddFoodForm = () => {
                         >
                             Previous
                         </button>
-                        {activeSection !== "preview" ? (
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    const sections = ["basic", "nutrition", "ingredients", "preview"];
-                                    const currentIndex = sections.indexOf(activeSection);
-                                    setActiveSection(sections[currentIndex + 1]);
-                                }}
-                                className="cursor-pointer px-6 py-2 rounded-lg font-medium border border-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
-                            >
-                                Next
-                            </button>
-                        ) : (
-                            <button
-                                type="submit"
-                                className="cursor-pointer px-6 py-2 rounded-lg font-medium border border-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
-                            >
-                                Save Menu Item
-                            </button>
-                        )}
+
+                        <button
+                            type="submit"
+                            className="cursor-pointer px-6 py-2 rounded-lg font-medium border border-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+                        >
+                            Next
+                        </button>
                     </div>
                 </form>
             </div>

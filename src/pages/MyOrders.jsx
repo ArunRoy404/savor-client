@@ -7,6 +7,7 @@ import Loader from '../components/Loader/Loader';
 import Error from '../components/UI/Error';
 import useDeleteOrderApi from '../axios/useDeleteOrderApi';
 import { notifyError, notifySuccess } from '../utilities/notification';
+import moment from 'moment';
 
 const MyOrders = () => {
 
@@ -22,25 +23,8 @@ const MyOrders = () => {
 
     })
 
-    // Function to format time ago
-    const timeAgo = (date) => {
-        const seconds = Math.floor((new Date() - date) / 1000);
-        const intervals = {
-            year: 31536000,
-            month: 2592000,
-            week: 604800,
-            day: 86400,
-            hour: 3600,
-            minute: 60
-        };
-
-        for (const [unit, secondsInUnit] of Object.entries(intervals)) {
-            const interval = Math.floor(seconds / secondsInUnit);
-            if (interval >= 1) {
-                return interval === 1 ? `${interval} ${unit} ago` : `${interval} ${unit}s ago`;
-            }
-        }
-        return "Just now";
+    const formateDate = (date) => {
+        return moment(date).fromNow()
     };
 
     const handleDeleteFood = (id) => {
@@ -97,7 +81,7 @@ const MyOrders = () => {
                                     <div className="mt-4 flex items-center space-x-4 text-sm">
                                         <div className="flex items-center">
                                             <FiClock className="mr-1" />
-                                            <span>{timeAgo(order.orderDate)}</span>
+                                            <span>{formateDate(order.orderDate)}</span>
                                         </div>
                                         <div className={`flex items-center ${order.status === 'completed' ? 'text-green-500' : 'text-yellow-500'}`}>
                                             <FiCheckCircle className="mr-1" />
@@ -126,17 +110,6 @@ const MyOrders = () => {
                         </div>
                     ))}
                 </div>
-
-                {/* Empty State (uncomment if needed) */}
-                {/* {orders.length === 0 && (
-          <div className="text-center py-12">
-            <div className="text-gray-400 mb-4">
-              <FiPackage size={48} className="mx-auto" />
-            </div>
-            <h3 className="text-lg font-medium text-gray-700">No orders yet</h3>
-            <p className="text-gray-500 mt-1">Your order history will appear here</p>
-          </div>
-        )} */}
             </div>
         </div>
     );
