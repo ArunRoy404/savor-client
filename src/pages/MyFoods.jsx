@@ -8,17 +8,32 @@ import axios from 'axios';
 import useAuthContext from '../custom_contexts/UseAuthContext';
 import Loader from '../components/Loader/Loader';
 import Error from '../components/UI/Error';
+import { notifyError, notifySuccess } from '../utilities/notification';
 
 const MyFoods = () => {
 
     const { isDark } = useThemeContext()
-    const {firebaseUser } = useAuthContext()
+    const { firebaseUser } = useAuthContext()
 
-    const { isPending, error, data: foods } = useQuery({
+    const { isPending, error, data: foods, refetch } = useQuery({
         queryKey: ['myFoods', firebaseUser],
         queryFn: () => axios.get(`http://localhost:3000/foods/my-foods?ownerEmail=${firebaseUser.email}`)
             .then(res => res.data)
     })
+
+    // Delete food item
+    const handleDeleteFood = (id) => {
+        axios.delete(`http://localhost:3000/foods/my-foods?id=${id}`)
+        .then(res=>{
+            if(res?.data?.deletedCount){
+                notifySuccess('Food Item Deleted')
+                refetch()
+            }
+        })
+        .catch(err=>{
+            notifyError(err.message)
+        })
+    };
 
     // State for modal
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -192,14 +207,11 @@ const MyFoods = () => {
         closeModal();
     };
 
-    // Delete food item
-    const handleDeleteFood = (id) => {
-        setFoods(foods.filter(food => food.id !== id));
-    };
 
-    if(isPending) return <Loader/>
 
-    if(error) return <Error/>
+    if (isPending) return <Loader />
+
+    if (error) return <Error />
 
     return (
         <div className="py-10">
@@ -211,7 +223,7 @@ const MyFoods = () => {
 
                 <div className="space-y-5">
                     {foods.map(food => (
-                        <div key={food.id} className={`${isDark ? 'bg-gray-900' : 'bg-white'} rounded-xl shadow-sm overflow-hidden border border-gray-500 hover:shadow-md transition-shadow`}>
+                        <div key={food._id} className={`${isDark ? 'bg-gray-900' : 'bg-white'} rounded-xl shadow-sm overflow-hidden border border-gray-500 hover:shadow-md transition-shadow`}>
                             <div className="flex flex-col md:flex-row">
                                 {/* Food Image */}
                                 <div className="md:w-60">
@@ -253,7 +265,7 @@ const MyFoods = () => {
                                         <FiEdit size={18} />
                                     </button>
                                     <button
-                                        onClick={() => handleDeleteFood(food.id)}
+                                        onClick={() => handleDeleteFood(food._id)}
                                         className="p-2 bg-red-100 cursor-pointer text-red-600 rounded-lg hover:bg-red-200 transition-colors"
                                         aria-label="Delete food"
                                     >
