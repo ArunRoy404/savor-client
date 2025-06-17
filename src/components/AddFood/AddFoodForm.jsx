@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { FiPlus, FiX, FiUpload, FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import useThemeContext from '../../custom_contexts/useThemeContext';
 import PreviewFood from './PreviewFood';
+import useAuthContext from '../../custom_contexts/UseAuthContext';
+import { useEffect } from 'react';
+import useAddFoodApi from '../../axios/useAddFoodApi';
+import { notifyError, notifySuccess, notifyWarn } from '../../utilities/notification';
 
 const AddFoodForm = () => {
     const [foodData, setFoodData] = useState({
@@ -26,16 +30,29 @@ const AddFoodForm = () => {
         price: 0,
         quantity: 0,
         origin: "",
-        procedure: ""
+        procedure: "",
+        ownerName: "",
+        ownerEmail: ""
     });
 
 
     const [activeSection, setActiveSection] = useState("basic");
     const [allergenInput, setAllergenInput] = useState("");
     const [dietaryTagInput, setDietaryTagInput] = useState("");
-
-
+    const { firebaseUser } = useAuthContext()
     const { isDark } = useThemeContext()
+    const { addFoodPromise } = useAddFoodApi()
+
+
+    useEffect(() => {
+        if (firebaseUser) {
+            setFoodData({
+                ...foodData,
+                ownerName: firebaseUser.displayName,
+                ownerEmail: firebaseUser.email
+            })
+        }
+    }, [firebaseUser])
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -137,10 +154,19 @@ const AddFoodForm = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleAddFood = (e) => {
         e.preventDefault();
-        console.log("Food data submitted:", foodData);
-        // Here you would typically send the data to your backend
+        addFoodPromise(foodData)
+            .then(res => {
+                if (res.data.insertedId) {
+                    notifySuccess("Food added Successfully")
+                } else {
+                    notifyWarn("Food add unsuccessful")
+                }
+            })
+            .catch(err => {
+                notifyError(err.message)
+            })
     };
 
     return (
@@ -151,7 +177,7 @@ const AddFoodForm = () => {
                     <p className="opacity-90">Fill in the details below to add a new dish to your menu</p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="p-6">
+                <form onSubmit={handleAddFood} className="p-6">
                     <div className="mb-8">
                         <div className="space-x-2 mb-6 overflow-x-auto pb-2 hidden md:flex">
                             <button
@@ -293,6 +319,32 @@ const AddFoodForm = () => {
                                             onChange={handleChange}
                                             min="0"
                                             className="w-full px-4 py-2 border border-gray-300 rounded-lg "
+                                        />
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label className="block  font-medium mb-2">Added by</label>
+                                        <input
+                                            type="text"
+                                            name=""
+                                            value={foodData.ownerName}
+                                            min="1"
+                                            disabled
+                                            className="opacity-70 cursor-not-allowed w-full px-4 py-2 border border-gray-300 rounded-lg "
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block  font-medium mb-2">Email</label>
+                                        <input
+                                            type="email"
+                                            name="price"
+                                            value={foodData.ownerEmail}
+                                            min="0"
+                                            step="0.01"
+                                            disabled
+                                            className="opacity-70 cursor-not-allowed w-full px-4 py-2 border border-gray-300 rounded-lg "
+                                            required
                                         />
                                     </div>
                                 </div>
