@@ -10,6 +10,7 @@ import Loader from '../components/Loader/Loader';
 import Error from '../components/UI/Error';
 import useBuyFoodApi from '../axios/useBuyFoodApi';
 import { notifyError, notifySuccess, notifyWarn } from '../utilities/notification';
+import useReduceStockApi from '../axios/useReduceStockApi';
 
 
 const PurchaseFood = () => {
@@ -19,9 +20,10 @@ const PurchaseFood = () => {
     const { foodDetailPromise } = useFoodDetailApi()
     const [quantity, setQuantity] = useState(1);
     const { buyFoodPromise } = useBuyFoodApi()
+    const { reduceStockPromise } = useReduceStockApi()
     const [buying, setBuying] = useState(false)
 
-    const { isPending, error, data: food } = useQuery({
+    const { isPending, error, data: food, refetch } = useQuery({
         queryKey: ['foodDetail'],
         queryFn: () => foodDetailPromise(id)
             .then(res => res.data)
@@ -34,6 +36,17 @@ const PurchaseFood = () => {
 
     const totalPrice = (food.price * quantity).toFixed(2);
     const purchaseDate = new Date().toLocaleString();
+
+    const handleStock = () => {
+        const stock = food.quantity - quantity
+        reduceStockPromise(food._id, stock)
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    refetch()
+                }
+            })
+    }
+
 
     const handlePurchase = () => {
         const purchaseData = {
@@ -57,6 +70,7 @@ const PurchaseFood = () => {
             .then(res => {
                 if (res.data.insertedId) {
                     notifySuccess("Food Purchased")
+                    handleStock()
                 } else {
                     notifyWarn("Something went wrong")
                 }
@@ -89,6 +103,7 @@ const PurchaseFood = () => {
                         <div className="space-y-2">
                             <h2 className="text-lg font-semibold">{food.name}</h2>
                             <p className="text-orange-500 font-bold text-xl">${food.price.toFixed(2)}</p>
+                            <p>Stock: {food.quantity}</p>
                         </div>
                     </div>
 
@@ -96,19 +111,21 @@ const PurchaseFood = () => {
                         {/* Quantity Selector */}
                         <div className="flex flex-col items-end justify-between h-full">
                             <div className='flex items-center gap-3'>
-                                <Button
-                                    onclick={() => setQuantity(prev => prev + 1)}
-                                    className='border px-[6px] py-1 rounded border-gray-400 hover:border-orange-400 hover:text-orange-400 transition-all duration-300 cursor-pointer'
+                                <button
+                                    disabled={quantity >= food.quantity}
+                                    onClick={() => setQuantity(prev => prev + 1)}
+                                    className='disabled:cursor-not-allowed disabled:opacity-20 border px-[6px] py-1 rounded border-gray-400 hover:border-orange-400 hover:text-orange-400 transition-all duration-300 cursor-pointer'
                                 >
                                     <FiPlus />
-                                </Button>
+                                </button>
                                 <p>{quantity}</p>
-                                <Button
-                                    onclick={() => setQuantity(prev => Math.max(1, prev - 1))}
-                                    className='border px-[6px] py-1 rounded border-gray-400 hover:border-orange-400 hover:text-orange-400 transition-all duration-300 cursor-pointer'
+                                <button
+                                    disabled={quantity == 1}
+                                    onClick={() => setQuantity(prev => prev - 1)}
+                                    className='disabled:cursor-not-allowed disabled:opacity-20 border px-[6px] py-1 rounded border-gray-400 hover:border-orange-400 hover:text-orange-400 transition-all duration-300 cursor-pointer'
                                 >
                                     <FiMinus />
-                                </Button>
+                                </button>
                             </div>
                             <div>
                                 <p className="text-lg font-bold opacity-80">${totalPrice}</p>
@@ -148,17 +165,34 @@ const PurchaseFood = () => {
                 </div>
 
                 {/* Purchase Button */}
-                <button
-                    disabled={buying}
-                    onClick={handlePurchase}
-                    className="disabled:cursor-not-allowed cursor-pointer mt-4 w-full py-3 px-6 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
-                >
-                    {
-                        buying
-                            ? <span class="loading loading-spinner loading-md"></span>
-                            : 'Complete Purchase'
-                    }
-                </button>
+                {
+                    !food.quantity
+                        ? <button
+                            disabled
+                            className="disabled:cursor-not-allowed cursor-pointer mt-6 w-full py-3 px-6 rounded-lg bg-white border border-red-500 text-red-500 font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
+                        >
+                            Item is not Available
+                        </button>
+                        : firebaseUser?.email !== food?.ownerEmail
+                            ? <button
+                                disabled={buying}
+                                onClick={handlePurchase}
+                                className="disabled:cursor-not-allowed cursor mt-4 w-full py-3 px-6 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
+                            >
+                                {
+                                    buying
+                                        ? <span class="loading loading-spinner loading-md"></span>
+                                        : 'Complete Purchase'
+                                }
+                            </button>
+                            : <Button
+                                to={"/my-foods"}
+                                className="cursor-pointer mt-6 w-full py-3 px-6 rounded-lg bg-gray-500 hover:bg-gray-600 text-white font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
+                            >
+                                Update
+                            </Button>
+                }
+
             </div>
         </div>
     )

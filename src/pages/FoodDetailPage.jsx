@@ -1,17 +1,18 @@
 import FoodDetail from "../components/FoodDetail/FoodDetail";
-import ReviewCard from "../components/ReviewCard/ReviewCard";
 import Button from "../components/UI/Button";
 import Ingredients from "../components/FoodDetail/Ingredients";
 import Nutrition from "../components/FoodDetail/Nutrition";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import useFoodDetailApi from "../axios/useFoodDetailApi";
 import Loader from "../components/Loader/Loader";
 import Error from "../components/UI/Error";
+import useAuthContext from "../custom_contexts/UseAuthContext";
 
 const FoodDetailPage = () => {
   const { id } = useParams()
   const { foodDetailPromise } = useFoodDetailApi()
+  const { firebaseUser } = useAuthContext()
 
   const { isPending, error, data: food } = useQuery({
     queryKey: ['foodDetail'],
@@ -19,9 +20,11 @@ const FoodDetailPage = () => {
       .then(res => res.data)
   })
 
-  if(isPending) return <Loader/>
+  if (isPending) return <Loader />
 
-  if(error) return <Error/>
+  if (error) return <Error />
+
+  console.log(food);
 
   return (
     <div className=" min-h-screen md:px-5 lg:px-30 py-10">
@@ -39,13 +42,28 @@ const FoodDetailPage = () => {
         <div className="flex flex-col justify-between">
           {/* Info */}
           <FoodDetail food={food} />
-          {/* Purchase Button */}
-          <Button
-            to={`/food/purchase/${food._id}`}
-            className="cursor-pointer mt-6 w-full py-3 px-6 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
-          >
-            Checkout
-          </Button>
+          {
+            !food.quantity
+              ? <button
+                disabled
+                className="disabled:cursor-not-allowed cursor-pointer mt-6 w-full py-3 px-6 rounded-lg bg-white border border-red-500 text-red-500 font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
+              >
+                Item is not Available
+              </button>
+              : firebaseUser?.email !== food?.ownerEmail
+                ? <Button
+                  to={`/food/purchase/${food._id}`}
+                  className="cursor-pointer mt-6 w-full py-3 px-6 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
+                >
+                  Checkout
+                </Button>
+                : <Button
+                  to={"/my-foods"}
+                  className="cursor-pointer mt-6 w-full py-3 px-6 rounded-lg bg-gray-500 hover:bg-gray-600 text-white font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
+                >
+                  Update
+                </Button>
+          }
         </div>
       </div>
 
@@ -63,14 +81,6 @@ const FoodDetailPage = () => {
         <h3 className="font-semibold text-xl mb-2">How to Make It</h3>
         <p>{food.procedure}</p>
       </div>
-
-      {/* Reviews Section */}
-      {/* <div className="mt-12">
-        <h3 className="text-xl font-semibold mb-4">Customer Reviews</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {food.reviews.map((review, i) => <ReviewCard key={i} review={review} />)}
-        </div>
-      </div> */}
     </div>
   );
 };
