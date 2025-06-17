@@ -3,71 +3,22 @@ import { FiEdit, FiTrash2, FiX, FiPlus, FiMinus } from 'react-icons/fi';
 import useThemeContext from '../custom_contexts/useThemeContext';
 import DietTag from '../components/FoodDetail/DietTag';
 import AllergenTag from '../components/FoodDetail/AllergenTag';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import useAuthContext from '../custom_contexts/UseAuthContext';
+import Loader from '../components/Loader/Loader';
+import Error from '../components/UI/Error';
 
 const MyFoods = () => {
 
     const { isDark } = useThemeContext()
-    // Sample food data
-    const [foods, setFoods] = useState([
-        {
-            id: 1,
-            name: "Spaghetti Carbonara",
-            image: "https://img.freepik.com/free-photo/italian-pasta-spaghetti-with-meatballs-parmesan-cheese-black-plate-dark-rustic-wood-background-dinner-slow-food-concept_2829-4639.jpg",
-            category: "Italian",
-            description: "A classic Roman pasta dish made with egg yolks, pecorino cheese, pancetta, and black pepper.",
-            servings: 4,
-            nutritional: {
-                caloriesPerServing: 650,
-                macros: {
-                    protein: "25g",
-                    carbs: "70g",
-                    fats: "22g"
-                },
-                allergens: ["Dairy", "Eggs"],
-                dietaryTags: ["Gluten", "Dairy"]
-            },
-            ingredients: [
-                "400g spaghetti",
-                "150g pancetta",
-                "3 large egg yolks",
-                "50g grated pecorino Romano",
-                "Freshly ground black pepper"
-            ],
-            price: 14.99,
-            quantity: 10,
-            origin: "Italy",
-            procedure: "Cook spaghetti in salted water. Sauté cubed pancetta until crispy. Whisk egg yolks with pecorino and pepper. Toss hot pasta into the pan with pancetta, then mix in egg sauce off heat."
-        },
-        {
-            id: 2,
-            name: "Margherita Pizza",
-            image: "https://img.freepik.com/free-photo/top-view-pepperoni-pizza-with-mushroom-sausages-bell-pepper-olive-corn-black-wooden_141793-2158.jpg",
-            category: "Italian",
-            description: "Classic pizza with tomato sauce, mozzarella, and basil.",
-            servings: 2,
-            nutritional: {
-                caloriesPerServing: 850,
-                macros: {
-                    protein: "35g",
-                    carbs: "95g",
-                    fats: "35g"
-                },
-                allergens: ["Dairy", "Gluten"],
-                dietaryTags: ["Vegetarian"]
-            },
-            ingredients: [
-                "Pizza dough",
-                "Tomato sauce",
-                "Fresh mozzarella",
-                "Basil leaves",
-                "Olive oil"
-            ],
-            price: 12.50,
-            quantity: 15,
-            origin: "Italy",
-            procedure: "Spread sauce on dough, add cheese, bake at 475°F for 10-12 minutes, add fresh basil after baking."
-        }
-    ]);
+    const {firebaseUser } = useAuthContext()
+
+    const { isPending, error, data: foods } = useQuery({
+        queryKey: ['myFoods', firebaseUser],
+        queryFn: () => axios.get(`http://localhost:3000/foods/my-foods?ownerEmail=${firebaseUser.email}`)
+            .then(res => res.data)
+    })
 
     // State for modal
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -246,6 +197,10 @@ const MyFoods = () => {
         setFoods(foods.filter(food => food.id !== id));
     };
 
+    if(isPending) return <Loader/>
+
+    if(error) return <Error/>
+
     return (
         <div className="py-10">
             <div className="">
@@ -256,7 +211,7 @@ const MyFoods = () => {
 
                 <div className="space-y-5">
                     {foods.map(food => (
-                        <div key={food.id} className={`${isDark ?'bg-gray-900' :'bg-white'} rounded-xl shadow-sm overflow-hidden border border-gray-500 hover:shadow-md transition-shadow`}>
+                        <div key={food.id} className={`${isDark ? 'bg-gray-900' : 'bg-white'} rounded-xl shadow-sm overflow-hidden border border-gray-500 hover:shadow-md transition-shadow`}>
                             <div className="flex flex-col md:flex-row">
                                 {/* Food Image */}
                                 <div className="md:w-60">
@@ -283,13 +238,13 @@ const MyFoods = () => {
                                     <p className="mt-3 opacity-70 line-clamp-2">{food.description}</p>
 
                                     <div className="mt-4 flex flex-wrap gap-2">
-                                        {food.nutritional.dietaryTags.map((tag, index) =><DietTag key={index}>{tag}</DietTag>)}
+                                        {food.nutritional.dietaryTags.map((tag, index) => <DietTag key={index}>{tag}</DietTag>)}
                                         {food.nutritional.allergens.map((allergen, index) => <AllergenTag key={index}>{allergen}</AllergenTag>)}
                                     </div>
                                 </div>
 
                                 {/* Action Buttons */}
-                                <div className={`${isDark ?'bg-gray-700' :'bg-gray-50'} md:w-50 flex md:flex-col items-center justify-center p-4 border-t md:border-t-0 md:border-l border-gray-500 space-x-3 md:space-x-0 md:space-y-3`}>
+                                <div className={`${isDark ? 'bg-gray-700' : 'bg-gray-50'} md:w-50 flex md:flex-col items-center justify-center p-4 border-t md:border-t-0 md:border-l border-gray-500 space-x-3 md:space-x-0 md:space-y-3`}>
                                     <button
                                         onClick={() => openUpdateModal(food)}
                                         className="p-2 cursor-pointer bg-orange-400 text-white rounded-lg hover:bg-orange-500 transition-colors"
@@ -313,7 +268,7 @@ const MyFoods = () => {
                 {/* Update Food Modal */}
                 {isModalOpen && currentFood && (
                     <div className="z-[999] fixed inset-0 bg-black/10 backdrop-blur-2xl flex items-center justify-center p-4">
-                        <div className={` ${isDark ?'bg-gray-900' :'bg-white/50'} rounded-xl shadow-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto`}>
+                        <div className={` ${isDark ? 'bg-gray-900' : 'bg-white/50'} rounded-xl shadow-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto`}>
                             <div className="p-6">
                                 <div className="flex justify-between items-center mb-6">
                                     <h2 className="text-2xl font-bold ">Update {currentFood.name}</h2>
