@@ -4,11 +4,11 @@ import axios  from 'axios'
 const DatabaseProvider = ({ children }) => {
 
     const getFoods = () =>{
-        return axios.get('http://localhost:3000/foods')
+        return axios.get('https://savor-server-avhf6x8eq-arun-roys-projects.vercel.app/foods')
     }
 
     const getTopFoods = () =>{
-        return axios.get('http://localhost:3000/top-foods')
+        return axios.get('https://savor-server-avhf6x8eq-arun-roys-projects.vercel.app/top-foods')
     }
 
     const database = {

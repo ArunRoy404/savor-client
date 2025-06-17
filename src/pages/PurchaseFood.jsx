@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from '../components/UI/Button';
 import useThemeContext from '../custom_contexts/useThemeContext';
 import { FiMinus, FiPlus } from "react-icons/fi";
-import { useParams } from 'react-router';
+import { Navigate, useNavigate, useParams } from 'react-router';
 import useFoodDetailApi from '../axios/useFoodDetailApi';
 import { useQuery } from '@tanstack/react-query';
 import useAuthContext from '../custom_contexts/UseAuthContext';
@@ -11,6 +11,7 @@ import Error from '../components/UI/Error';
 import useBuyFoodApi from '../axios/useBuyFoodApi';
 import { notifyError, notifySuccess, notifyWarn } from '../utilities/notification';
 import useReduceStockApi from '../axios/useReduceStockApi';
+import { useEffect } from 'react';
 
 
 const PurchaseFood = () => {
@@ -23,16 +24,25 @@ const PurchaseFood = () => {
     const { reduceStockPromise } = useReduceStockApi()
     const [buying, setBuying] = useState(false)
 
+    const navigate = useNavigate()
+
     const { isPending, error, data: food, refetch } = useQuery({
         queryKey: ['foodDetail'],
         queryFn: () => foodDetailPromise(id)
             .then(res => res.data)
     })
 
+    useEffect(() => {
+        if (firebaseUser && food) {
+            if (firebaseUser.email === food.ownerEmail) {
+                navigate('/my-foods')
+                notifyError("Can not buy own item!")
+            }
+        }
+    }, [firebaseUser, food, navigate])
+
     if (isPending) return <Loader />
     if (error) return <Error />
-
-
 
     const totalPrice = (food.price * quantity).toFixed(2);
     const purchaseDate = new Date().toLocaleString();
@@ -45,6 +55,14 @@ const PurchaseFood = () => {
                     refetch()
                 }
             })
+    }
+
+
+    if (firebaseUser && food) {
+        if (firebaseUser.email === food.ownerEmail) {
+            navigate('/my-foods')
+            notifyError("Can not buy own item!")
+        }
     }
 
 

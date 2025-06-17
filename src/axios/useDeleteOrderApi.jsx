@@ -3,8 +3,8 @@ import useAxiosSecure from './useAxiosSecure';
 
 const useDeleteOrderApi = () => {
     const axiosSecure = useAxiosSecure()
-    const deleteOrderPromise = id => {
-        return axiosSecure.delete(`/my-orders?id=${id}`)
+    const deleteOrderPromise = (id, email) => {
+        return axiosSecure.delete(`/my-orders?id=${id}`, { data: { email } })
     }
     return (
         {

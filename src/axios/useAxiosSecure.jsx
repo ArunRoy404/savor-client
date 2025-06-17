@@ -3,7 +3,7 @@ import useAuthContext from '../custom_contexts/UseAuthContext';
 
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: 'https://savor-server-avhf6x8eq-arun-roys-projects.vercel.app'
 })
 
 const useAxiosSecure = () => {
@@ -12,7 +12,11 @@ const useAxiosSecure = () => {
 
     if (firebaseUser) {
         axiosInstance.interceptors.request.use(config => {
-            config.headers.authorization = `Bearer ${firebaseUser.accessToken}`
+            const token = localStorage.getItem("accessToken");
+            if (token) {
+                config.headers.authorization = `${token}`
+            }
+
             return config
         })
     }

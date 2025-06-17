@@ -8,6 +8,7 @@ import Error from '../components/UI/Error';
 import useDeleteOrderApi from '../axios/useDeleteOrderApi';
 import { notifyError, notifySuccess } from '../utilities/notification';
 import moment from 'moment';
+import NoResultFound from '../components/NoResultFound/NoResultFound';
 
 const MyOrders = () => {
 
@@ -27,8 +28,8 @@ const MyOrders = () => {
         return moment(date).fromNow()
     };
 
-    const handleDeleteFood = (id) => {
-        deleteOrderPromise(id)
+    const handleDeleteFood = (id, email) => {
+        deleteOrderPromise(id, email)
             .then(res => {
                 if (res?.data?.deletedCount) {
                     notifySuccess('Food Item Deleted')
@@ -52,6 +53,9 @@ const MyOrders = () => {
                 </div>
 
                 <div className="space-y-5">
+                    {
+                        orders.length === 0 && <NoResultFound />
+                    }
                     {orders.map((order) => (
                         <div key={order._id} className={`${isDark ? 'bg-gray-800' : 'bg-white'} rounded-xl shadow-sm overflow-hidden border border-gray-500  hover:shadow-xl transition-shadow`}>
                             <div className="flex flex-col md:flex-row">
@@ -99,7 +103,7 @@ const MyOrders = () => {
                                 {/* Action Buttons */}
                                 <div className={`${isDark ? 'bg-gray-700' : 'bg-white'} md:w-24 flex md:flex-col items-center justify-center p-4 border-t md:border-t-0 md:border-l border-gray-400`}>
                                     <button
-                                        onClick={() => handleDeleteFood(order._id)}
+                                        onClick={() => handleDeleteFood(order._id, order.buyerEmail)}
                                         className="cursor-pointer p-2 text-red-500 hover:text-red-700 transition-colors"
                                         aria-label="Delete order"
                                     >

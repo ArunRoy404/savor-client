@@ -39,6 +39,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const logOut = () => {
+        localStorage.removeItem("accessToken");
         setIsUserLoading(true)
         return signOut(auth)
     }
@@ -51,6 +52,7 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             if (currentUser) {
                 setFirebaseUser({ ...currentUser })
+                localStorage.setItem("accessToken", currentUser.accessToken);
                 reloadUser()
             } else {
                 setFirebaseUser(null)

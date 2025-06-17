@@ -5,6 +5,7 @@ import "yet-another-react-lightbox/styles.css";
 import { useQuery } from '@tanstack/react-query';
 import useDatabaseContext from '../custom_contexts/UseDatabaseContext';
 import Loader from '../components/Loader/Loader';
+import NoResultFound from '../components/NoResultFound/NoResultFound';
 
 const FoodGallery = () => {
   const [open, setOpen] = useState(false);
@@ -38,6 +39,9 @@ const FoodGallery = () => {
       {/* gallery  */}
       <div className="py-20">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {
+            images.length === 0 && <NoResultFound />
+          }
           {images.map((img, i) => (
             <div key={i} className="cursor-pointer rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
               <img

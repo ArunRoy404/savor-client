@@ -11,6 +11,8 @@ import { notifyError, notifySuccess } from '../utilities/notification';
 import UpdateFoodModal from '../components/UpdateFoodModal/UpdateFoodModal';
 import useMyFoodsApi from '../axios/useMyFoodsApi';
 import useDeleteFoodApi from '../axios/useDeleteFoodApi';
+import NoResultFound from '../components/NoResultFound/NoResultFound';
+
 
 const MyFoods = () => {
 
@@ -58,6 +60,8 @@ const MyFoods = () => {
 
     if (error) return <Error />
 
+
+
     return (
         <div className="py-10">
             <div className="">
@@ -67,6 +71,9 @@ const MyFoods = () => {
                 </div>
 
                 <div className="space-y-5">
+                    {
+                        foods.length === 0 && <NoResultFound />
+                    }
                     {foods.map(food => (
                         <div key={food._id} className={`${isDark ? 'bg-gray-900' : 'bg-white'} rounded-xl shadow-sm overflow-hidden border border-gray-500 hover:shadow-md transition-shadow`}>
                             <div className="flex flex-col md:flex-row">

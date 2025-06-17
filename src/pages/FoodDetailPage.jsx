@@ -24,8 +24,6 @@ const FoodDetailPage = () => {
 
   if (error) return <Error />
 
-  console.log(food);
-
   return (
     <div className=" min-h-screen md:px-5 lg:px-30 py-10">
       {/* Hero Section */}
