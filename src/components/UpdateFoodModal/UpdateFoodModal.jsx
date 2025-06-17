@@ -1,14 +1,14 @@
 import useThemeContext from '../../custom_contexts/useThemeContext';
 import { FiX, FiPlus, FiMinus } from 'react-icons/fi';
-import axios from 'axios';
 import { useState } from 'react';
 import { notifyError, notifySuccess, notifyWarn } from '../../utilities/notification';
+import useUpdateFoodApi from '../../axios/useUpdateFoodApi';
 
 const UpdateFoodModal = ({ handleCloseModal, currentFood, setCurrentFood, refetch }) => {
 
     const [updating, setUpdating] = useState(false)
-
     const { isDark } = useThemeContext()
+    const { updateFoodPromise } = useUpdateFoodApi()
 
     const handleInput = (e) => {
         const { name, value } = e.target;
@@ -141,14 +141,13 @@ const UpdateFoodModal = ({ handleCloseModal, currentFood, setCurrentFood, refetc
         e.preventDefault()
         setUpdating(true)
 
-        console.log(currentFood);
-        axios.put(`http://localhost:3000/foods/my-foods?id=${currentFood._id}`, currentFood)
+        updateFoodPromise(currentFood._id, currentFood)
             .then(res => {
                 if (res.data.modifiedCount) {
                     notifySuccess("Updated Successfully")
                     handleCloseModal()
                     refetch()
-                }else{
+                } else {
                     notifyWarn("No Data Changed")
                 }
             })
@@ -159,8 +158,6 @@ const UpdateFoodModal = ({ handleCloseModal, currentFood, setCurrentFood, refetc
                 setUpdating(false)
             })
     };
-
-
 
 
     return (

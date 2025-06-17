@@ -3,13 +3,12 @@ import useAuthContext from '../custom_contexts/UseAuthContext';
 
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:3000/'
+    baseURL: 'http://localhost:3000'
 })
 
 const useAxiosSecure = () => {
 
     const { firebaseUser } = useAuthContext()
-    console.log(firebaseUser);
 
     if (firebaseUser) {
         axiosInstance.interceptors.request.use(config => {
@@ -17,7 +16,6 @@ const useAxiosSecure = () => {
             return config
         })
     }
-
     return axiosInstance
 };
 

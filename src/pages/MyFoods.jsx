@@ -4,12 +4,13 @@ import useThemeContext from '../custom_contexts/useThemeContext';
 import DietTag from '../components/FoodDetail/DietTag';
 import AllergenTag from '../components/FoodDetail/AllergenTag';
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import useAuthContext from '../custom_contexts/UseAuthContext';
 import Loader from '../components/Loader/Loader';
 import Error from '../components/UI/Error';
 import { notifyError, notifySuccess } from '../utilities/notification';
 import UpdateFoodModal from '../components/UpdateFoodModal/UpdateFoodModal';
+import useMyFoodsApi from '../axios/useMyFoodsApi';
+import useDeleteFoodApi from '../axios/useDeleteFoodApi';
 
 const MyFoods = () => {
 
@@ -19,16 +20,18 @@ const MyFoods = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentFood, setCurrentFood] = useState(null);
 
+    const { myFoodsPromise } = useMyFoodsApi()
+    const { deleteFoodPromise } = useDeleteFoodApi()
+
 
     const { isPending, error, data: foods, refetch } = useQuery({
         queryKey: ['myFoods', firebaseUser?.email],
-        queryFn: () => axios.get(`http://localhost:3000/foods/my-foods?ownerEmail=${firebaseUser.email}`)
-            .then(res => res.data)
+        queryFn: () => myFoodsPromise(firebaseUser.email).then(res => res.data)
     })
 
 
     const handleDeleteFood = (id) => {
-        axios.delete(`http://localhost:3000/foods/my-foods?id=${id}`)
+        deleteFoodPromise(id)
             .then(res => {
                 if (res?.data?.deletedCount) {
                     notifySuccess('Food Item Deleted')
@@ -50,8 +53,6 @@ const MyFoods = () => {
         setIsModalOpen(false);
         setCurrentFood(null);
     };
-
-    console.log(currentFood);
 
     if (isPending) return <Loader />
 
