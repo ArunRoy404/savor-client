@@ -3,6 +3,7 @@
 
 html {
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 nav ul .active {
@@ -36,3 +37,4 @@ body {
 page-title {
   background-image: url('../public/bg.png');
 }
+

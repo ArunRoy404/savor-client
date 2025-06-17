@@ -3,16 +3,25 @@ import ReviewCard from "../components/ReviewCard/ReviewCard";
 import Button from "../components/UI/Button";
 import Ingredients from "../components/FoodDetail/Ingredients";
 import Nutrition from "../components/FoodDetail/Nutrition";
-import { foodItems } from "../utilities/dummyFoodsData";
+import { useParams } from "react-router";
+import { useQuery } from "@tanstack/react-query";
+import useFoodDetailApi from "../axios/useFoodDetailApi";
+import Loader from "../components/Loader/Loader";
+import Error from "../components/UI/Error";
 
 const FoodDetailPage = () => {
-  // const { name } = useParams(); 
-  // const food = foodItems.find(item => item.name.toLowerCase() === decodeURIComponent(name).toLowerCase());
-  const food = foodItems[0]
+  const { id } = useParams()
+  const { foodDetailPromise } = useFoodDetailApi()
 
-  if (!food) {
-    return <div className="text-center py-10">Food not found</div>;
-  }
+  const { isPending, error, data: food } = useQuery({
+    queryKey: ['foodDetail'],
+    queryFn: () => foodDetailPromise(id)
+      .then(res => res.data)
+  })
+
+  if(isPending) return <Loader/>
+
+  if(error) return <Error/>
 
   return (
     <div className=" min-h-screen md:px-5 lg:px-30 py-10">
@@ -32,7 +41,7 @@ const FoodDetailPage = () => {
           <FoodDetail food={food} />
           {/* Purchase Button */}
           <Button
-            to={'/purchase'}
+            to={`/food/purchase/${food._id}`}
             className="cursor-pointer mt-6 w-full py-3 px-6 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
           >
             Checkout
@@ -56,12 +65,12 @@ const FoodDetailPage = () => {
       </div>
 
       {/* Reviews Section */}
-      <div className="mt-12">
+      {/* <div className="mt-12">
         <h3 className="text-xl font-semibold mb-4">Customer Reviews</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {food.reviews.map((review, i) => <ReviewCard key={i} review={review} />)}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

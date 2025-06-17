@@ -86,7 +86,7 @@ const MyFoods = () => {
                                             <h2 className="text-xl font-semibold ">{food.name}</h2>
                                             <div className="flex items-center space-x-3 mt-1">
                                                 <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded-full">{food.category}</span>
-                                                <span className=" opacity-90 text-sm">${food.price.toFixed(2)}</span>
+                                                <span className=" opacity-90 text-sm">${food.price}</span>
                                                 <span className="opacity-90 text-sm">{food.quantity} in stock</span>
                                             </div>
                                         </div>

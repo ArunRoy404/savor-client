@@ -1,36 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import { foodItems } from '../utilities/dummyFoodsData';
+import { useState } from 'react';
 import Button from '../components/UI/Button';
 import useThemeContext from '../custom_contexts/useThemeContext';
 import { FiMinus, FiPlus } from "react-icons/fi";
+import { useParams } from 'react-router';
+import useFoodDetailApi from '../axios/useFoodDetailApi';
+import { useQuery } from '@tanstack/react-query';
+import useAuthContext from '../custom_contexts/UseAuthContext';
+import Loader from '../components/Loader/Loader';
+import Error from '../components/UI/Error';
+import useBuyFoodApi from '../axios/useBuyFoodApi';
+import { notifyError, notifySuccess, notifyWarn } from '../utilities/notification';
 
 
 const PurchaseFood = () => {
-    //   const { name } = useParams(); // e.g., /purchase/Spaghetti%20Carbonara
-    //   const food = foodItems.find(item => item.name.toLowerCase() === decodeURIComponent(name).toLowerCase());
-    const food = foodItems[1]
-
     const { isDark } = useThemeContext()
-
-    // Mock logged-in user data
-    const currentUser = {
-        name: "Arun Roy",
-        email: "aurn.roy@example.com"
-    };
-
+    const { firebaseUser } = useAuthContext()
+    const { id } = useParams()
+    const { foodDetailPromise } = useFoodDetailApi()
     const [quantity, setQuantity] = useState(1);
+    const { buyFoodPromise } = useBuyFoodApi()
+    const [buying, setBuying] = useState(false)
 
-    useEffect(()=>{
-        setQuantity(1)
-    },[])
+    const { isPending, error, data: food } = useQuery({
+        queryKey: ['foodDetail'],
+        queryFn: () => foodDetailPromise(id)
+            .then(res => res.data)
+    })
 
-    if (!food) {
-        return <div className="text-center py-10">Food not found</div>;
-    }
+    if (isPending) return <Loader />
+    if (error) return <Error />
+
+
 
     const totalPrice = (food.price * quantity).toFixed(2);
     const purchaseDate = new Date().toLocaleString();
-
 
     const handlePurchase = () => {
         const purchaseData = {
@@ -38,15 +41,27 @@ const PurchaseFood = () => {
             price: food.price,
             quantity,
             totalPrice,
-            buyerName: currentUser.name,
-            buyerEmail: currentUser.email,
+            buyerName: firebaseUser?.displayName,
+            buyerEmail: firebaseUser?.email,
             purchaseDate
         };
 
-        console.log("Purchase successful:", purchaseData);
-        alert("Thank you for your purchase!");
-        // Here you would typically send this data to backend or Redux
+        setBuying(true)
+
+        buyFoodPromise(purchaseData)
+            .then(res => {
+                if (res.data.insertedId) {
+                    notifySuccess("Food Purchased")
+                } else {
+                    notifyWarn("Something went wrong")
+                }
+            })
+            .catch(err => {
+                notifyError(err.message)
+            })
+            .finally(setBuying(false))
     };
+
 
     return (
         <div className=" min-h-screen py-10 px-4">
@@ -77,12 +92,14 @@ const PurchaseFood = () => {
                         <div className="flex flex-col items-end justify-between h-full">
                             <div className='flex items-center gap-3'>
                                 <Button
+                                    onclick={() => setQuantity(prev => prev + 1)}
                                     className='border px-[6px] py-1 rounded border-gray-400 hover:border-orange-400 hover:text-orange-400 transition-all duration-300 cursor-pointer'
                                 >
                                     <FiPlus />
                                 </Button>
                                 <p>{quantity}</p>
                                 <Button
+                                    onclick={() => setQuantity(prev => Math.max(1, prev - 1))}
                                     className='border px-[6px] py-1 rounded border-gray-400 hover:border-orange-400 hover:text-orange-400 transition-all duration-300 cursor-pointer'
                                 >
                                     <FiMinus />
@@ -94,7 +111,6 @@ const PurchaseFood = () => {
                         </div>
                     </div>
                 </div>
-
 
 
                 {/* Total Price */}
@@ -111,11 +127,11 @@ const PurchaseFood = () => {
                         <div className='max-w-max'>
                             <div className='flex items-center gap-5'>
                                 <p className='font-bold opacity-90 w-10'>Name</p>
-                                <p>{currentUser.name}</p>
+                                <p>{firebaseUser?.displayName}</p>
                             </div>
                             <div className='flex items-center gap-5'>
                                 <p className='font-bold opacity-90 w-10'>Email </p>
-                                <p>{currentUser.email}</p>
+                                <p>{firebaseUser?.email}</p>
                             </div>
                         </div>
                     </div>
@@ -131,7 +147,11 @@ const PurchaseFood = () => {
                     onClick={handlePurchase}
                     className="mt-4 w-full py-3 px-6 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
                 >
-                    Complete Purchase
+                    {
+                        buying
+                            ? <span class="loading loading-spinner loading-md"></span>
+                            : 'Complete Purchase'
+                    }
                 </button>
             </div>
         </div>

@@ -27,11 +27,11 @@ const router = createBrowserRouter([
                 element: <AllFoods />
             },
             {
-                path: '/food-detail',
+                path: '/food/:id',
                 element: <FoodDetailPage />
             },
             {
-                path: '/purchase',
+                path: '/food/purchase/:id',
                 element: <PurchaseFood />
             },
             {

@@ -17,7 +17,7 @@ const ReviewCard = ({review}) => {
                 <div>
                     <p className="font-medium">User </p>
                     <div className="flex">
-                        {[...Array(5)].map((_, i) => (i < review.rate ? <IoStar color="orange" /> : <IoStar color="lightGray" />))}
+                        {[...Array(5)].map((_, i) => (i < review.rate ? <IoStar key={i} color="orange" /> : <IoStar key={i} color="lightGray" />))}
                     </div>
                 </div>
             </div>
