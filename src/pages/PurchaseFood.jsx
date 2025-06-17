@@ -37,13 +37,18 @@ const PurchaseFood = () => {
 
     const handlePurchase = () => {
         const purchaseData = {
-            foodName: food.name,
-            price: food.price,
-            quantity,
-            totalPrice,
-            buyerName: firebaseUser?.displayName,
+            food: {
+                foodId: food._id,
+                foodName: food.name,
+                image: food.image,
+                price: totalPrice,
+                quantity,
+                category: food.category
+            },
+            customer: firebaseUser?.displayName,
             buyerEmail: firebaseUser?.email,
-            purchaseDate
+            status: "completed",
+            orderDate: purchaseDate
         };
 
         setBuying(true)
@@ -144,8 +149,9 @@ const PurchaseFood = () => {
 
                 {/* Purchase Button */}
                 <button
+                    disabled={buying}
                     onClick={handlePurchase}
-                    className="mt-4 w-full py-3 px-6 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
+                    className="disabled:cursor-not-allowed cursor-pointer mt-4 w-full py-3 px-6 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
                 >
                     {
                         buying

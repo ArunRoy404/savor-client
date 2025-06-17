@@ -1,48 +1,26 @@
 import { FiTrash2, FiClock, FiCheckCircle } from 'react-icons/fi';
 import useThemeContext from '../custom_contexts/useThemeContext';
+import { useQuery } from '@tanstack/react-query';
+import useAuthContext from '../custom_contexts/UseAuthContext';
+import useMyOrdersApi from '../axios/useMyOrdersApi';
+import Loader from '../components/Loader/Loader';
+import Error from '../components/UI/Error';
+import useDeleteOrderApi from '../axios/useDeleteOrderApi';
+import { notifyError, notifySuccess } from '../utilities/notification';
 
 const MyOrders = () => {
 
     const { isDark } = useThemeContext()
-    // Sample order data
-    const orders = [
-        {
-            id: 1,
-            food: {
-                name: "Spaghetti Carbonara",
-                image: "https://img.freepik.com/free-photo/italian-pasta-spaghetti-with-meatballs-parmesan-cheese-black-plate-dark-rustic-wood-background-dinner-slow-food-concept_2829-4639.jpg",
-                price: 14.99,
-                category: "Italian"
-            },
-            customer: "John Smith",
-            orderDate: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000), // 14 days ago
-            status: "completed"
-        },
-        {
-            id: 2,
-            food: {
-                name: "Margherita Pizza",
-                image: "https://img.freepik.com/free-photo/top-view-pepperoni-pizza-with-mushroom-sausages-bell-pepper-olive-corn-black-wooden_141793-2158.jpg",
-                price: 12.50,
-                category: "Italian"
-            },
-            customer: "Sarah Johnson",
-            orderDate: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), // 3 days ago
-            status: "completed"
-        },
-        {
-            id: 3,
-            food: {
-                name: "Beef Burger",
-                image: "https://img.freepik.com/free-photo/front-view-tasty-meat-burger-with-cheese-salad-dark-background_140725-89597.jpg",
-                price: 10.99,
-                category: "American"
-            },
-            customer: "Michael Brown",
-            orderDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000), // 1 day ago
-            status: "pending"
-        }
-    ];
+    const { firebaseUser } = useAuthContext()
+    const { myOrdersPromise } = useMyOrdersApi()
+    const { deleteOrderPromise } = useDeleteOrderApi()
+
+    const { isPending, error, data: orders, refetch } = useQuery({
+        queryKey: ['myOrders', firebaseUser?.email],
+        queryFn: () => myOrdersPromise(firebaseUser?.email)
+            .then(res => res.data)
+
+    })
 
     // Function to format time ago
     const timeAgo = (date) => {
@@ -65,11 +43,21 @@ const MyOrders = () => {
         return "Just now";
     };
 
-    // Delete order function
-    const handleDelete = (orderId) => {
-        console.log("Deleting order:", orderId);
-        // Add your actual delete logic here
+    const handleDeleteFood = (id) => {
+        deleteOrderPromise(id)
+            .then(res => {
+                if (res?.data?.deletedCount) {
+                    notifySuccess('Food Item Deleted')
+                    refetch()
+                }
+            })
+            .catch(err => {
+                notifyError(err.message)
+            })
     };
+
+    if (isPending) return <Loader />
+    if (error) return <Error />
 
     return (
         <div>
@@ -81,7 +69,7 @@ const MyOrders = () => {
 
                 <div className="space-y-5">
                     {orders.map((order) => (
-                        <div key={order.id} className={`${isDark ?'bg-gray-800' :'bg-white'} rounded-xl shadow-sm overflow-hidden border border-gray-500  hover:shadow-xl transition-shadow`}>
+                        <div key={order._id} className={`${isDark ? 'bg-gray-800' : 'bg-white'} rounded-xl shadow-sm overflow-hidden border border-gray-500  hover:shadow-xl transition-shadow`}>
                             <div className="flex flex-col md:flex-row">
                                 {/* Food Image */}
                                 <div className="md:w-60">
@@ -96,10 +84,14 @@ const MyOrders = () => {
                                 <div className="flex-1 p-6">
                                     <div className="flex justify-between items-start">
                                         <div>
-                                            <h2 className="text-xl font-semibold ">{order.food.name}</h2>
+                                            <h2 className="text-xl font-semibold ">{order.food.foodName}</h2>
                                             <p className="">{order.food.category}</p>
                                         </div>
                                         <span className="text-orange-400 font-medium">${order.food.price}</span>
+                                    </div>
+
+                                    <div>
+                                        <p>Quantity: {order.food.quantity}</p>
                                     </div>
 
                                     <div className="mt-4 flex items-center space-x-4 text-sm">
@@ -121,9 +113,9 @@ const MyOrders = () => {
                                 </div>
 
                                 {/* Action Buttons */}
-                                <div className={`${isDark ?'bg-gray-700' :'bg-white'} md:w-24 flex md:flex-col items-center justify-center p-4 border-t md:border-t-0 md:border-l border-gray-400`}>
+                                <div className={`${isDark ? 'bg-gray-700' : 'bg-white'} md:w-24 flex md:flex-col items-center justify-center p-4 border-t md:border-t-0 md:border-l border-gray-400`}>
                                     <button
-                                        onClick={() => handleDelete(order.id)}
+                                        onClick={() => handleDeleteFood(order._id)}
                                         className="cursor-pointer p-2 text-red-500 hover:text-red-700 transition-colors"
                                         aria-label="Delete order"
                                     >
