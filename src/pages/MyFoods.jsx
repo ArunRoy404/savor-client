@@ -32,8 +32,8 @@ const MyFoods = () => {
     })
 
 
-    const handleDeleteFood = (id) => {
-        deleteFoodPromise(id)
+    const handleDeleteFood = (id, email) => {
+        deleteFoodPromise(id, email)
             .then(res => {
                 if (res?.data?.deletedCount) {
                     notifySuccess('Food Item Deleted')
@@ -117,7 +117,7 @@ const MyFoods = () => {
                                         <FiEdit size={18} />
                                     </button>
                                     <button
-                                        onClick={() => handleDeleteFood(food._id)}
+                                        onClick={() => handleDeleteFood(food._id, food.ownerEmail)}
                                         className="p-2 bg-red-100 cursor-pointer text-red-600 rounded-lg hover:bg-red-200 transition-colors"
                                         aria-label="Delete food"
                                     >

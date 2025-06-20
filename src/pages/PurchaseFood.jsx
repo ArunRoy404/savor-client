@@ -35,8 +35,8 @@ const PurchaseFood = () => {
     useEffect(() => {
         if (firebaseUser && food) {
             if (firebaseUser.email === food.ownerEmail) {
-                navigate('/my-foods')
-                notifyError("Can not buy own item!")
+                navigate(`/food/${food._id}`)
+                notifyError("Can not purchase own item!")
             }
         }
     }, [firebaseUser, food, navigate])
@@ -45,26 +45,18 @@ const PurchaseFood = () => {
     if (error) return <Error />
 
     const totalPrice = (food.price * quantity).toFixed(2);
-    const purchaseDate = new Date().toLocaleString();
+    const purchaseDate = new Date().toLocaleString()
 
     const handleStock = () => {
         const stock = food.quantity - quantity
-        reduceStockPromise(food._id, stock)
+        const purchaseCount = food.purchaseCount+quantity
+        reduceStockPromise(food._id, stock, purchaseCount)
             .then(res => {
                 if (res.data.modifiedCount) {
                     refetch()
                 }
             })
     }
-
-
-    if (firebaseUser && food) {
-        if (firebaseUser.email === food.ownerEmail) {
-            navigate('/my-foods')
-            notifyError("Can not buy own item!")
-        }
-    }
-
 
     const handlePurchase = () => {
         const purchaseData = {
@@ -195,7 +187,7 @@ const PurchaseFood = () => {
                             ? <button
                                 disabled={buying}
                                 onClick={handlePurchase}
-                                className="disabled:cursor-not-allowed cursor mt-4 w-full py-3 px-6 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
+                                className="cursor-pointer disabled:cursor-not-allowed cursor mt-4 w-full py-3 px-6 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition duration-200 shadow-md transform hover:scale-[1.01] active:scale-100"
                             >
                                 {
                                     buying

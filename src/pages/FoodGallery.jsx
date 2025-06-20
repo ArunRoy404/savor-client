@@ -3,20 +3,20 @@ import PageTitle from '../components/PageTitle/PageTitle';
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { useQuery } from '@tanstack/react-query';
-import useDatabaseContext from '../custom_contexts/UseDatabaseContext';
 import Loader from '../components/Loader/Loader';
 import NoResultFound from '../components/NoResultFound/NoResultFound';
+import useFoodsApi from '../axios/useFoodsApi';
 
 const FoodGallery = () => {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const [images, setImages] = useState([])
+  const { getFoodsPromise } = useFoodsApi()
 
 
-  const { getFoods } = useDatabaseContext()
   const { isPending, error, data } = useQuery({
     queryKey: ['allFoods'],
-    queryFn: () => getFoods().then(res => res.data)
+    queryFn: () => getFoodsPromise().then(res => res.data)
   })
 
   useEffect(() => {

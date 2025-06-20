@@ -5,8 +5,8 @@ const useDeleteFoodApi = () => {
 
     const axiosSecure = useAxiosSecure()
 
-    const deleteFoodPromise = (id) => {
-        return axiosSecure.delete(`/foods/my-foods?id=${id}`,)
+    const deleteFoodPromise = (id, email) => {
+        return axiosSecure.delete(`/foods/my-foods?id=${id}`, { data: { email } })
     }
     return (
         { deleteFoodPromise }

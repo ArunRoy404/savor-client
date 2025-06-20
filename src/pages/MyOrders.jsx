@@ -25,7 +25,8 @@ const MyOrders = () => {
     })
 
     const formateDate = (date) => {
-        return moment(date).fromNow()
+        const dateObject = new Date(date)
+        return moment(dateObject).fromNow()
     };
 
     const handleDeleteFood = (id, email) => {

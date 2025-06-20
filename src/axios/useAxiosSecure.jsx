@@ -1,13 +1,11 @@
 import axios from 'axios';
 import useAuthContext from '../custom_contexts/UseAuthContext';
 
-
 const axiosInstance = axios.create({
-    baseURL: 'https://savor-server-avhf6x8eq-arun-roys-projects.vercel.app'
+    baseURL: 'https://savor-server.vercel.app/'
 })
 
 const useAxiosSecure = () => {
-
     const { firebaseUser } = useAuthContext()
 
     if (firebaseUser) {
@@ -16,7 +14,6 @@ const useAxiosSecure = () => {
             if (token) {
                 config.headers.authorization = `${token}`
             }
-
             return config
         })
     }

@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import useDatabaseContext from "../../custom_contexts/UseDatabaseContext";
 import useThemeContext from "../../custom_contexts/useThemeContext";
 import Button from "../UI/Button";
 import TopFoodsContainer from "./TopFoodsContainer";
@@ -7,19 +6,20 @@ import leaf from "/leaf.png"
 import pea from '/pea.png'
 import Loader from "../Loader/Loader";
 import Error from "../UI/Error";
+import useTopFoodsApi from "../../axios/useTopFoodsApi";
 
 const TopFoods = () => {
     const { isDark } = useThemeContext()
-    const { getTopFoods } = useDatabaseContext()
+    const { topFoodsPromise } = useTopFoodsApi()
 
     const { isPending, error, data } = useQuery({
         queryKey: ['topFoods'],
-        queryFn: () => getTopFoods().then(res => res.data)
+        queryFn: () => topFoodsPromise().then(res => res.data)
     })
 
     if (isPending) return <Loader />
 
-    if (error) return <Error/>
+    if (error) return <Error />
 
 
     return (

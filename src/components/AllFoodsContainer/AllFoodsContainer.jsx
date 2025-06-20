@@ -4,17 +4,17 @@ import FoodCard from "../FoodCard/FoodCard";
 import Search from "../UI/Search";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../Loader/Loader";
-import axios from 'axios'
 import NoResultFound from "../NoResultFound/NoResultFound";
+import useFoodsApi from "../../axios/useFoodsApi";
 
 const AllFoodsContainer = () => {
     const { isDark } = useThemeContext()
-
     const [searchText, setSearchText] = useState('')
+    const { getFoodsPromise } = useFoodsApi()
 
     const { isPending, error, data } = useQuery({
         queryKey: ['allFoods', searchText],
-        queryFn: () => axios.get(`https://savor-server-avhf6x8eq-arun-roys-projects.vercel.app/foods?title=${searchText}`)
+        queryFn: () => getFoodsPromise(searchText)
             .then(res => res.data)
     })
 
@@ -29,7 +29,7 @@ const AllFoodsContainer = () => {
             : error ? <Error />
                 : <div className="md:mt-20 grid md:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-15 xl:gap-20 md:px-5 xl:px-40">
                     {
-                        data?.length===0 && <NoResultFound/>
+                        data?.length === 0 && <NoResultFound />
                     }
                     {
                         data.map((food, i) => <FoodCard food={food} key={i} />)

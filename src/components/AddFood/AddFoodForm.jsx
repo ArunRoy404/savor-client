@@ -156,12 +156,11 @@ const AddFoodForm = () => {
 
     const handleAddFood = (e) => {
         e.preventDefault();
-
         const sections = ["basic", "nutrition", "ingredients", "preview"];
         const currentIndex = sections.indexOf(activeSection);
-        setActiveSection(sections[currentIndex + 1]);
 
-        if (activeSection === "preview") [
+
+        if (activeSection === "preview") {
             addFoodPromise(foodData)
                 .then(res => {
                     if (res.data.insertedId) {
@@ -173,7 +172,9 @@ const AddFoodForm = () => {
                 .catch(err => {
                     notifyError(err.message)
                 })
-        ]
+        } else {
+            setActiveSection(sections[currentIndex + 1]);
+        }
     };
 
     return (
@@ -557,7 +558,11 @@ const AddFoodForm = () => {
                             type="submit"
                             className="cursor-pointer px-6 py-2 rounded-lg font-medium border border-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
                         >
-                            Next
+                            {
+                                activeSection === "preview"
+                                    ? "Add"
+                                    : "Next"
+                            }
                         </button>
                     </div>
                 </form>

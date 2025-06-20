@@ -4,7 +4,7 @@ import useAxiosSecure from './useAxiosSecure';
 const useAddFoodApi = () => {
     const axiosSecure = useAxiosSecure()
 
-    const addFoodPromise = food => {
+    const addFoodPromise = (food) => {
         return axiosSecure.post('/foods', food)
     }
     return (
