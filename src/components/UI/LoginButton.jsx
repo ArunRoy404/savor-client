@@ -1,11 +1,17 @@
-import { NavLink } from "react-router";
+import { Navigate, useLocation, useNavigate } from "react-router";
 import { AiOutlineLogin } from "react-icons/ai";
 
 const LoginButton = () => {
+    const { pathname } = useLocation()
+    const navigate = useNavigate()
     return (
-        <NavLink to={'/login'}>
-            <AiOutlineLogin size={20}/>
-        </NavLink>
+        <button
+            className="cursor-pointer"
+            onClick={() => {
+                navigate('/login', { state: pathname })
+            }}>
+            <AiOutlineLogin size={20} />
+        </button>
     );
 };
 

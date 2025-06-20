@@ -38,8 +38,7 @@ const AllFoodsContainer = () => {
     )
 
     return (
-        <div className={`${isDark ? 'bg-[#2c313d]' : 'bg-[#dfdcdc]'}
-                         mt-20 p-10 mb-10 rounded-2xl transition-all duration-1000`}>
+        <div className={` ${isDark ? 'bg-gradient-to-r from-gray-800 to-gray-750 ' : 'bg-gradient-to-r from-slate-200 to-slate-100'} mt-20 p-10 mb-10 rounded-2xl transition-all duration-1000`}>
 
             <div className="w-full flex justify-end mb-10 md:mb-0 md:px-30">
                 <Search searchText={searchText} handleSearch={handleSearch} />

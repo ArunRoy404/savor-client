@@ -68,20 +68,18 @@ const Login = () => {
         <>
             <Navbar />
             <div className="h-[calc(100vh-64px)] flex items-center justify-end container mx-auto lg:px-30">
-                {/* Background Image with Overlay */}
                 <div className="fixed inset-0 z-0">
                     <div className="absolute inset-0 bg-black opacity-40"></div>
                     <img
                         src={bg}
                         alt="Food background"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-all duration-200"
                     />
                 </div>
 
-                <div className='mx-auto lg:mx-0'>
-                    {/* Login Card */}
+                <div className='mx-auto lg:mx-0 backdrop-blur-sm lg:backdrop-blur-none rounded-2xl z-[1000]'>
                     <div className="w-full md:w-auto text-white">
-                        <div className="card w-sm md:w-lg shrink-0 ">
+                        <div className="card w-[calc(100vw-80px)] md:w-lg shrink-0 ">
                             <div className="card-body">
                                 <h1 className='text-4xl font-bold mb-3'>Log In</h1>
                                 <form onSubmit={handleLogin} className="fieldset border-b-2 border-gray-400 border-dashed">

@@ -5,7 +5,7 @@ import PageTitle from "../components/PageTitle/PageTitle";
 
 const AllFoods = () => {
     return (
-        <div>
+        <div className="container mx-auto">
             <PageTitle
                 title={'Taste the World in Every Bite'}
                 subtitle={'From Italian Classics to Vegan Delights – Something for Every Palate.'}
