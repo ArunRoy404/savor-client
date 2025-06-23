@@ -196,7 +196,7 @@ const PurchaseFood = () => {
                             >
                                 {
                                     buying
-                                        ? <span class="loading loading-spinner loading-md"></span>
+                                        ? <span className="loading loading-spinner loading-md"></span>
                                         : 'Complete Purchase'
                                 }
                             </button>

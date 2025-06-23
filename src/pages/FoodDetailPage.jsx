@@ -29,8 +29,7 @@ const FoodDetailPage = () => {
   }, [food])
 
   if (isPending) return <Loader />
-  if (error) return <Error />
-
+  if (error) return <Error error={error} />
 
   return (
     <div className="px-5 min-h-screen md:px-5 lg:px-30 py-10">
