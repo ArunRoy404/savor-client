@@ -1,26 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
 import useThemeContext from "../../custom_contexts/useThemeContext";
-import Button from "../UI/Button";
 import TopFoodsContainer from "./TopFoodsContainer";
 import leaf from "/leaf.png"
 import pea from '/pea.png'
-import Loader from "../Loader/Loader";
-import Error from "../UI/Error";
-import useTopFoodsApi from "../../axios/useTopFoodsApi";
 
 const TopFoods = () => {
     const { isDark } = useThemeContext()
-    const { topFoodsPromise } = useTopFoodsApi()
-
-    const { isPending, error, data } = useQuery({
-        queryKey: ['topFoods'],
-        queryFn: () => topFoodsPromise().then(res => res.data)
-    })
-
-    if (isPending) return <Loader />
-
-    if (error) return <Error />
-
 
     return (
         <div className={`${isDark ? 'bg-gradient-to-r from-gray-800 to-gray-750 ' : 'bg-gradient-to-r from-slate-200 to-slate-100'} `}>
@@ -34,14 +18,7 @@ const TopFoods = () => {
                 <p className='z-10 text-sm mb-3 font-medium opacity-80'>
                     Explore the most loved dishes across all cuisines and categories.
                 </p>
-                <TopFoodsContainer data={data} />
-                <div className="mt-10">
-                    <Button
-                        to={'/all-foods'}
-                        className="cursor-pointer rounded-full px-5 py-2 text-sm md:text-md font-bold border bg-black text-white border-black hover:bg-white  hover:text-black transition duration-300">
-                        Show All
-                    </Button>
-                </div>
+                <TopFoodsContainer/>
             </div>
         </div>
     );

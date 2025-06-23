@@ -31,7 +31,7 @@ const FoodGallery = () => {
   if (isPending) return <Loader />
   if (error) return <Error />
   return (
-    <>
+    <div className='container mx-auto'>
       <PageTitle
         title={'A Visual Taste of Our Menu'}
         subtitle={'Browse our most-loved dishes in a glance-ready gallery.'} />
@@ -64,7 +64,7 @@ const FoodGallery = () => {
           slides={images}
         />
       </div>
-    </>
+    </div>
   );
 };
 

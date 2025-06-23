@@ -46,7 +46,7 @@ const MyOrders = () => {
     if (error) return <Error />
 
     return (
-        <div>
+        <div className='container mx-auto'>
             <div className="py-10">
                 <div className="mb-10">
                     <h1 className="text-3xl font-bold ">Order History</h1>

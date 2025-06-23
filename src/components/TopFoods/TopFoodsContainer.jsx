@@ -1,7 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
+import useTopFoodsApi from "../../axios/useTopFoodsApi";
 import FoodCard from "../FoodCard/FoodCard";
 import ScrollContainer from 'react-indiana-drag-scroll'
+import Loader from "../Loader/Loader";
+import Error from "../UI/Error";
+import Button from "../UI/Button";
 
-const TopFoodsContainer = ({data}) => {
+const TopFoodsContainer = () => {
+
+
+    const { topFoodsPromise } = useTopFoodsApi()
+    const { isPending, error, data } = useQuery({
+        queryKey: ['topFoods'],
+        queryFn: () => topFoodsPromise().then(res => res.data)
+    })
+    if (isPending) return <Loader />
+    if (error) return <Error />
+
+
     return (
         <div className="px-5">
             <ScrollContainer className="scroll-container">
@@ -14,6 +30,13 @@ const TopFoodsContainer = ({data}) => {
                     }
                 </div>
             </ScrollContainer>
+            <div className="mt-10">
+                <Button
+                    to={'/all-foods'}
+                    className="cursor-pointer rounded-full px-5 py-2 text-sm md:text-md font-bold border bg-black text-white border-black hover:bg-white  hover:text-black transition duration-300">
+                    Show All
+                </Button>
+            </div>
         </div>
     );
 };

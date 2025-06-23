@@ -25,6 +25,8 @@ const MyFoods = () => {
     const { myFoodsPromise } = useMyFoodsApi()
     const { deleteFoodPromise } = useDeleteFoodApi()
 
+    const [deleteLoading, setDeleteLoading] = useState(false)
+
 
     const { isPending, error, data: foods, refetch } = useQuery({
         queryKey: ['myFoods', firebaseUser?.email],
@@ -33,6 +35,7 @@ const MyFoods = () => {
 
 
     const handleDeleteFood = (id, email) => {
+        setDeleteLoading(true)
         deleteFoodPromise(id, email)
             .then(res => {
                 if (res?.data?.deletedCount) {
@@ -42,6 +45,9 @@ const MyFoods = () => {
             })
             .catch(err => {
                 notifyError(err.message)
+            })
+            .finally(() => {
+                setDeleteLoading(false)
             })
     };
 
@@ -63,7 +69,7 @@ const MyFoods = () => {
 
 
     return (
-        <div className="py-10">
+        <div className="py-10 container mx-auto">
             <div className="">
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold">Menu Management</h1>
@@ -121,7 +127,11 @@ const MyFoods = () => {
                                         className="p-2 bg-red-100 cursor-pointer text-red-600 rounded-lg hover:bg-red-200 transition-colors"
                                         aria-label="Delete food"
                                     >
-                                        <FiTrash2 size={18} />
+                                        {
+                                            deleteLoading
+                                                ? <span className="loading loading-spinner loading-xs"></span>
+                                                : <FiTrash2 size={18} />
+                                        }
                                     </button>
                                 </div>
                             </div>
