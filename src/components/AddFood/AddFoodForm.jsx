@@ -10,6 +10,7 @@ import NutritionForm from './NutritionForm';
 import IngredientsForm from './IngredientsForm';
 import AddFoodActions from './AddFoodActions';
 import AddFoodProgress from './AddFoodProgress';
+import Error from '../UI/Error';
 
 const AddFoodForm = () => {
     const [foodData, setFoodData] = useState({
@@ -42,6 +43,7 @@ const AddFoodForm = () => {
 
     const [activeSection, setActiveSection] = useState("basic");
     const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
     const { firebaseUser } = useAuthContext()
     const { isDark } = useThemeContext()
     const { addFoodPromise } = useAddFoodApi()
@@ -80,6 +82,7 @@ const AddFoodForm = () => {
                     }
                 })
                 .catch(err => {
+                    setError(err)
                     notifyError(err.message)
                 })
                 .finally(() => {
@@ -89,6 +92,8 @@ const AddFoodForm = () => {
             setActiveSection(sections[currentIndex + 1]);
         }
     };
+
+    if (error) return <Error error={error} />
 
     return (
         <div className={` ${isDark ? 'bg-gray-800' : 'bg-white'}  drop-shadow-xl rounded-2xl`} >

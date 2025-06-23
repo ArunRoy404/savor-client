@@ -43,7 +43,7 @@ const MyOrders = () => {
     };
 
     if (isPending) return <Loader />
-    if (error) return <Error />
+    if (error) return <Error error={error} />
 
     return (
         <div className='px-5 container mx-auto'>

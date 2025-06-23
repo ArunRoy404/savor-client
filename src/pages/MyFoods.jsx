@@ -64,8 +64,7 @@ const MyFoods = () => {
 
     if (isPending) return <Loader />
 
-    if (error) return <Error />
-
+    if (error) return <Error error={error} />
 
 
     return (
