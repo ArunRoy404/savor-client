@@ -8,6 +8,8 @@ import useFoodDetailApi from "../axios/useFoodDetailApi";
 import Loader from "../components/Loader/Loader";
 import Error from "../components/UI/Error";
 import useAuthContext from "../custom_contexts/UseAuthContext";
+import { notifyWarn } from "../utilities/notification";
+import { useEffect } from "react";
 
 const FoodDetailPage = () => {
   const { id } = useParams()
@@ -20,9 +22,15 @@ const FoodDetailPage = () => {
       .then(res => res.data)
   })
 
-  if (isPending) return <Loader />
+  useEffect(() => {
+    if (food && food?.quantity === 0) {
+      notifyWarn("Item is not available")
+    }
+  }, [food])
 
+  if (isPending) return <Loader />
   if (error) return <Error />
+
 
   return (
     <div className=" min-h-screen md:px-5 lg:px-30 py-10">

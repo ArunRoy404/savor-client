@@ -7,7 +7,7 @@ const TopFoods = () => {
     const { isDark } = useThemeContext()
 
     return (
-        <div className={`${isDark ? 'bg-gradient-to-r from-gray-800 to-gray-750 ' : 'bg-gradient-to-r from-slate-200 to-slate-100'} `}>
+        <div className={`${isDark ? 'bg-gray-800 ' : 'bg-gradient-to-r from-slate-200 to-slate-100'} `}>
             <div className="container mx-auto pt-10 md:pt-20 pb-10 mt-20 text-center rounded-2xl relative">
                 <img className="absolute w-20 top-10 left-10 md:w-40 md:top-20 md:left-20 rotate-270" src={leaf} alt="" />
                 <img className="absolute w-20 bottom-10 right-10 md:w-40 md:bottom-20 md:right-20" src={pea} alt="" />

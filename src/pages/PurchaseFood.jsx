@@ -39,6 +39,10 @@ const PurchaseFood = () => {
                 notifyError("Can not purchase own item!")
             }
         }
+
+        if (food && food?.quantity === 0) {
+            notifyWarn("Item is not available")
+        }
     }, [firebaseUser, food, navigate])
 
     if (isPending) return <Loader />
@@ -49,7 +53,7 @@ const PurchaseFood = () => {
 
     const handleStock = () => {
         const stock = food.quantity - quantity
-        const purchaseCount = food.purchaseCount+quantity
+        const purchaseCount = food.purchaseCount + quantity
         reduceStockPromise(food._id, stock, purchaseCount)
             .then(res => {
                 if (res.data.modifiedCount) {
@@ -88,7 +92,7 @@ const PurchaseFood = () => {
             .catch(err => {
                 notifyError(err.message)
             })
-            .finally(setBuying(false))
+            .finally(() => setBuying(false))
     };
 
 

@@ -31,14 +31,14 @@ const FoodGallery = () => {
   if (isPending) return <Loader />
   if (error) return <Error />
   return (
-    <div className='container mx-auto'>
+    <div className='px-5 container mx-auto'>
       <PageTitle
         title={'A Visual Taste of Our Menu'}
         subtitle={'Browse our most-loved dishes in a glance-ready gallery.'} />
 
       {/* gallery  */}
       <div className="py-20">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 md:gap-4">
           {
             images.length === 0 && <NoResultFound />
           }

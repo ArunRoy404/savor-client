@@ -69,7 +69,7 @@ const MyFoods = () => {
 
 
     return (
-        <div className="py-10 container mx-auto">
+        <div className="px-5 py-10 container mx-auto">
             <div className="">
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold">Menu Management</h1>
