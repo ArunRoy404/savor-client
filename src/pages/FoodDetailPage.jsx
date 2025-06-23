@@ -33,7 +33,8 @@ const FoodDetailPage = () => {
 
 
   return (
-    <div className=" min-h-screen md:px-5 lg:px-30 py-10">
+    <div className="px-5 min-h-screen md:px-5 lg:px-30 py-10">
+      <title>Savor | Food Detail</title>
       {/* Hero Section */}
       <div className="mx-auto grid lg:grid-cols-2 gap-10">
         {/* Image */}

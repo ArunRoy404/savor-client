@@ -5,6 +5,7 @@ const Home = () => {
   return (
     <>
       <div>
+        <title>Savor | Home</title>
         <Banner />
         <Foods byPopularity={true} />
       </div>

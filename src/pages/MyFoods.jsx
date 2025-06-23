@@ -69,6 +69,7 @@ const MyFoods = () => {
 
     return (
         <div className="px-5 py-10 container mx-auto">
+            <title>SAvor | My Foods</title>
             <div className="">
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold">Menu Management</h1>

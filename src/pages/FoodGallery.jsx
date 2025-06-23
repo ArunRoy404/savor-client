@@ -32,6 +32,7 @@ const FoodGallery = () => {
   if (error) return <Error />
   return (
     <div className='px-5 container mx-auto'>
+      <title>Savor | Gallery</title>
       <PageTitle
         title={'A Visual Taste of Our Menu'}
         subtitle={'Browse our most-loved dishes in a glance-ready gallery.'} />

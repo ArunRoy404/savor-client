@@ -47,6 +47,7 @@ const MyOrders = () => {
 
     return (
         <div className='px-5 container mx-auto'>
+            <title>Savor | My Orders</title>
             <div className="py-10">
                 <div className="mb-10">
                     <h1 className="text-3xl font-bold ">Order History</h1>

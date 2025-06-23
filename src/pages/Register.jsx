@@ -89,6 +89,7 @@ const Login = () => {
 
     return (
         <>
+        <title>Savor | Register</title>
             <Navbar />
             <div className="h-[calc(100vh-64px)] flex items-center justify-end container mx-auto lg:px-30">
                 <div className="fixed inset-0 z-0">

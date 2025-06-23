@@ -4,6 +4,7 @@ import './ErrorPage.css'
 const ErrorPage = () => {
     return (
         <div className="bg-purple">
+            <title>404</title>
             <div className="stars">
                 <div className="custom-navbar">
                 </div>
