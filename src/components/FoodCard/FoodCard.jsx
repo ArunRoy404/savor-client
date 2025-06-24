@@ -5,18 +5,20 @@ import useThemeContext from "../../custom_contexts/useThemeContext";
 
 const FoodCard = ({ food }) => {
 
-    const {isDark} = useThemeContext()
+    const { isDark } = useThemeContext()
 
     const { image, name, purchaseCount, nutritional, rating, price, quantity } = food
     return (
-        <div className={`${isDark ?'bg-gray-700' :'bg-white'} cursor-pointer group z-10 overflow-hidden text-left flex-shrink-0 relative  rounded-2xl hover:drop-shadow-xl transition duration-400`}>
+        <div className={`${isDark ? 'bg-gray-700' : 'bg-white'} cursor-pointer group z-10 overflow-hidden text-left flex-shrink-0 relative  rounded-2xl hover:drop-shadow-xl transition duration-400`}>
             <img className="group-hover:scale-105 transition duration-300 h-40 min-w-70 w-full md:h-50 object-cover" src={image} alt="" />
-            <FaRegHeart className="absolute top-5 right-5 cursor-pointer" color="orange" size={30} />
+            <div className="absolute top-5 right-5 cursor-pointe" >
+                <FaRegHeart color="orange" size={25} />
+            </div>
             <div className="p-5">
                 <h1 className="font-bold">{name}</h1>
                 <div className="flex items-center justify-between gap-6 mt-1">
                     <p className="text-orange-400 font-bold text-xl">${price}</p>
-                    <p className=" text-sm font-bold flex items-center justify-center gap-2">
+                    <p className="text-sm font-bold flex items-center justify-center gap-2">
                         <FaStar color="orange" />
                         <span className="opacity-50"> {rating} Rating</span>
                     </p>
