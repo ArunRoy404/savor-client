@@ -31,7 +31,7 @@ export default function BannerSwiper() {
   }
 
   return (
-    <div className='mt-15 md:mt-4 relative swiper-container'>
+    <div className='mt-15 md:mt-10 pb-20 relative swiper-container'>
       <Swiper
         onSwiper={e => swiperRef.current = e}
         onSlideChange={e => { setActiveIndex(e.realIndex) }}

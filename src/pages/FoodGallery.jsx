@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import Loader from '../components/Loader/Loader';
 import NoResultFound from '../components/NoResultFound/NoResultFound';
 import useFoodsApi from '../axios/useFoodsApi';
+import { MdOutlineZoomIn } from "react-icons/md";
 
 const FoodGallery = () => {
   const [open, setOpen] = useState(false);
@@ -44,15 +45,19 @@ const FoodGallery = () => {
             images.length === 0 && <NoResultFound />
           }
           {images.map((img, i) => (
-            <div key={i} className="cursor-pointer rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-              <img
-                src={img.src}
-                alt={img.alt}
+            <div key={i} className="group relative cursor-pointer rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+              <div
                 onClick={() => {
                   setIndex(i);
                   setOpen(true);
                 }}
-                className="hover:scale-105 transition duration-300 w-full h-40 lg:h-60 object-cover"
+                className='absolute z-10 w-full h-full bg-black/40 group-hover:opacity-100 opacity-0 flex items-center justify-center transition-all duration-300'>
+                <MdOutlineZoomIn color='white' size={30} />
+              </div>
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="group-hover:scale-105 transition duration-300 w-full h-40 lg:h-60 object-cover"
               />
             </div>
           ))}
