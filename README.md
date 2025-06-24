@@ -48,6 +48,8 @@ The goal of this project is to provide a scalable and user-friendly platform for
 | 🌙 **Dark / Light Theme Toggle** | Toggle between light and dark UI modes |
 | 🔍 **API Handling**            | Uses Axios interceptors and TanStack Query for clean, secure data fetching |
 | 🔐 **Secure Data Flow**        | Firebase user access token used for authenticated backend requests |
+| 🚫 **Unauthorized / Forbidden Handling** | Handles 401 and 403 errors gracefully with redirection and feedback |
+| 🔐 **Secure Data Flow**        | Firebase user access token used for authenticated backend requests |
 
 ---
 
@@ -75,3 +77,5 @@ Here are some of the main packages and tools used in this project:
 
 ---
 
+## 📸 Screenshot
+![alt text](image.png)
