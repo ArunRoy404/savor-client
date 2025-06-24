@@ -1,5 +1,5 @@
 import Lottie from "lottie-react";
-import noResultAnimation from '../../../public/lottieFiles/no_result.json'
+import noResultAnimation from '../../lottieFiles/no_result.json'
 
 const NoResultFound = () => {
     return (

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { FaLocationDot, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa6';
+import Logo from '../Logo/Logo';
 
 const Footer = () => {
 
@@ -40,15 +41,14 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-800 text-white pt-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-slate-800 text-white pt-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 font-semibold">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
           {/* About Us Column */}
           <div className="space-y-6">
-            <h4 className="text-lg font-semibold relative pb-2 after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-12 after:bg-[#ff5e15]">
-              About Us
-            </h4>
-            <p className=" text-sm leading-relaxed">
+            <Logo />
+
+            <p className="mt-4 text-sm leading-relaxed">
               We are Savor Restaurant, and we're passionate about serving delicious food made with the finest ingredients.
             </p>
             <div className="flex space-x-3">

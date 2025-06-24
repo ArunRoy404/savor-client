@@ -1,6 +1,6 @@
 import Lottie from "lottie-react";
-import forbiddenAnimation from '../../../public/lottieFiles/forbidden_access.json'
-import noResultAnimation from '../../../public/lottieFiles/no_result.json'
+import forbiddenAnimation from '../../lottieFiles/forbidden_access.json'
+import noResultAnimation from '../../lottieFiles/no_result.json'
 
 
 const Error = ({ error }) => {
