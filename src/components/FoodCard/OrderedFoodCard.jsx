@@ -67,7 +67,11 @@ const OrderedFoodCard = ({ order, refetch }) => {
                         </div>
                     </div>
 
-                    <div className="mt-4 pt-4 border-t border-gray-100">
+                    <div className='mt-2 flex justify-end'>
+                        <span className='text-sm'>{order.orderDate}</span>
+                    </div>
+
+                    <div className="mt-3 pt-4 border-t border-gray-100">
                         <p className="">
                             <span className="font-medium">Owner:</span> {order.customer}
                         </p>
