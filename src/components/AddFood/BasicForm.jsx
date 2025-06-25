@@ -98,7 +98,7 @@ const BasicForm = ({ foodData, handleChange }) => {
                         value={foodData.price}
                         onChange={handleChange}
                         min="0"
-                        step="0.01"
+                        step="0"
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg "
                         required
                     />

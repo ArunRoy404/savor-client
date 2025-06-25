@@ -61,6 +61,10 @@ const AddFoodForm = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        if (!isNaN(value)) {
+            setFoodData(prev => ({ ...prev, [name]: Number(value) }))
+            return
+        }
         setFoodData(prev => ({ ...prev, [name]: value }));
     };
 
