@@ -61,7 +61,7 @@ const AddFoodForm = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        if (!isNaN(value)) {
+        if (!isNaN(value) && value!=='') {
             setFoodData(prev => ({ ...prev, [name]: Number(value) }))
             return
         }
@@ -70,6 +70,7 @@ const AddFoodForm = () => {
 
 
     const handleAddFood = (e) => {
+        console.log(foodData);
         e.preventDefault();
         const sections = ["basic", "nutrition", "ingredients", "preview"];
         const currentIndex = sections.indexOf(activeSection);

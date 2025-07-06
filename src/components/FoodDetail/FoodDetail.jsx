@@ -3,6 +3,7 @@ import DietTag from "./DietTag";
 import AllergenTag from "./AllergenTag";
 
 const FoodDetail = ({food}) => {
+    console.log(food);
     return (
         <div className="space-y-4">
             <h1 className="text-3xl font-bold">{food.name}</h1>
@@ -21,7 +22,7 @@ const FoodDetail = ({food}) => {
 
             {/* Price  */}
             <div className="">
-                <span className="text-2xl font-semibold text-orange-500">${food.price.toFixed(2)}</span>
+                <span className="text-2xl font-semibold text-orange-500">${food?.price?.toFixed(2)}</span>
             </div>
 
             {/* Origin */}
