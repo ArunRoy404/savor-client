@@ -2,20 +2,20 @@
 
 > A full-featured restaurant management web app where users can register, log in, manage their own food items, browse all foods, purchase meals, manage orders, and more!
 
-## 📍 Project Overview
+# 📍 Project Overview
 
 **Savor** is a modern and responsive restaurant management system that allows users to interact with the platform in meaningful ways. From managing food listings to purchasing dishes and viewing top-rated meals, this application provides a seamless experience using cutting-edge technologies like React, Tailwind CSS, Firebase, Swiper.js, and TanStack Query.
 
 ---
 
-## 🌐 Live Links
+# 🌐 Live Links
 
 - 🔗 **Client (Frontend)**: [https://savor-client.vercel.app](https://savor-client.vercel.app) 
 - 🖥️ **Server (Backend)**: [https://savor-server.vercel.app](https://savor-server.vercel.app) 
 
 ---
 
-## 🎯 Purpose
+# 🎯 Purpose
 
 The goal of this project is to provide a scalable and user-friendly platform for managing restaurant operations, including:
 
@@ -29,7 +29,7 @@ The goal of this project is to provide a scalable and user-friendly platform for
 
 ---
 
-## ✨ Key Features
+# ✨ Key Features
 
 | Feature                        | Description |
 |-------------------------------|-------------|
@@ -53,29 +53,99 @@ The goal of this project is to provide a scalable and user-friendly platform for
 
 ---
 
-## 🧰 Technologies & Packages Used
+# 🧰 Technologies & Packages Used
 
 Here are some of the main packages and tools used in this project:
 
-### 🧱 Frontend Framework & Tools
-- `react`: JavaScript library for building user interfaces
-- `react-dom`: DOM rendering for React
-- `react-router`: Navigation and routing
-- `tailwindcss`: Utility-first CSS framework
-- `daisyui`: Plugin for Tailwind to create beautiful UI components
-- `axios`: HTTP client for API calls
-- `@tanstack/react-query`: For data fetching, caching, and error handling
-- `firebase`: For user authentication and real-time database
-- `yet-another-react-lightbox`: Image gallery viewer
-- `swiper`: Library for sliders/carousels
-- `lottie-react`: Lottie animation support
-- `react-hot-toast`: Toast notifications
-- `react-icons`: Easy access to icons via popular libraries
-- `motion`: Animation utilities from Framer Motion
-- `react-countup`: Animated number counters
-- `moment`: Date formatting and manipulation
+## Main Technologies Used
+
+- React for building the frontend user interface  
+- Node.js and Express.js for backend server  
+- MongoDB as the database  
+- Firebase for user authentication  
+- Tailwind CSS for styling  
+- Vercel and Render for deployment  
+  
+
+<br/>
+
+
+## Dependencies Used
+**Frontend:**
+- react  
+- react-dom  
+- react-router  
+- tailwindcss  
+- daisyui  
+- axios  
+- @tanstack/react-query  
+- firebase  
+- framer-motion  
+- react-hot-toast  
+
+
+**Backend:**
+- express  
+- mongoose  
+- cors  
+- jsonwebtoken  
+- dotenv  
+- bcryptjs  
 
 ---
 
-## 📸 Screenshot
+<br/>
+
+# 🪜 Savor - Local Development Setup Guide
+Follow these steps to run the Savor project on your local machine.
+
+## Prerequisites
+- Node.js (v16 or higher recommended)
+- npm or yarn
+- Git
+
+
+## Step-by-Step Installation
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/ArunRoy404/savor-client.git
+   cd savor-client
+   ```
+
+2. **Set up environment variables**
+    Create a .env file in the root directory and add the following variables with your own credentials:
+
+    ```bash
+        VITE_apiKey=YOUR_FIREBASE_API_KEY
+        VITE_authDomain=YOUR_FIREBASE_AUTH_DOMAIN
+        VITE_projectId=YOUR_FIREBASE_PROJECT_ID
+        VITE_storageBucket=YOUR_FIREBASE_STORAGE_BUCKET
+        VITE_messagingSenderId=YOUR_FIREBASE_MESSAGING_SENDER_ID
+        VITE_appId=YOUR_FIREBASE_APP_ID
+    ```
+
+    You'll need to:
+    - Create a Firebase project at https://firebase.google.com/
+
+
+3. **Install dependencies**
+   ```bash
+        npm install
+        # or
+        yarn install
+   ```
+    
+4. **Run The Development Server**
+   ```bash
+        npm run dev
+        # or
+        yarn dev
+   ```
+
+5. **Access the application**
+    Open your browser and visit: http://localhost:5173
+
+---
+
+# 📸 Screenshot
 ![alt text](image.png)
