@@ -33,13 +33,7 @@
     transition: all 0.3s ease;
 }
 
-.button-next {
-    right: 10px;
-}
 
-.button-prev {
-    left: 10px;
-}
 
 .swiper-container:hover .button-next {
     opacity: 100;
