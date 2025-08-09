@@ -1,4 +1,5 @@
 // import useAuthContext from "../../CustomContexts/UseAuthContext";
+import { useState } from "react";
 import Logo from "../Logo/Logo";
 import NavActions from "./NavActions";
 import NavLinksList from "./NavLinksList";
@@ -6,11 +7,27 @@ import NavLinksList from "./NavLinksList";
 
 const Navbar = () => {
     // const { loggedUser } = useAuthContext()
+    const [scrolled, setScrolled] = useState(false)
+
+    useState(()=>{
+        const handleScroll = () =>{
+            if(window.scrollY>0){
+                setScrolled(true)
+            }
+            else{
+                setScrolled(false)
+            }
+        }
+
+        window.addEventListener("scroll", handleScroll)
+
+        return ()=> window.removeEventListener('scroll', handleScroll)
+    },[])
 
     return (
-        <nav className="z-100 w-full fixed top-0">
-            <div className="relative z-100 w-full backdrop-blur-sm flex">
-                <div className="navbar container mx-auto flex justify-between">
+        <nav className={`${scrolled ? 'shadow-md' : ''} transition-shadow duration-300 z-100 w-full fixed top-0`}>
+            <div className="relative z-100 w-full bg-white flex">
+                <div className="navbar container px-4 sm:px-6 lg:px-8 mx-auto flex justify-between">
                     <div className="flex items-center gap-20">
 
                         {/* logo  */}
