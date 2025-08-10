@@ -3,6 +3,7 @@ import Logo from '../Logo/Logo';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { IoMailOutline } from "react-icons/io5";
 import useThemeContext from '../../custom_contexts/useThemeContext';
+import { notifySuccess } from '../../utilities/notification';
 
 const FooterNew = () => {
 
@@ -13,6 +14,7 @@ const FooterNew = () => {
 
         const handleSubmit = (e) => {
             e.preventDefault();
+            notifySuccess('🍕 You’re in! Now the delicious news will find you.')
             setEmail('');
         };
 
@@ -70,7 +72,7 @@ const FooterNew = () => {
     )
 
     return (
-        <footer className={` ${isDark ? '' : 'bg-gradient-to-t from-[#e3cdf7]' } font-semibold pt-20`}>
+        <footer className={` ${isDark ? '' : 'bg-gradient-to-t from-[#e3cdf7]'} font-semibold pt-20`}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
                 <div className="flex flex-col items-center text-center mx-auto mb-10">
                     <div className="space-y-6 max-w-150">
