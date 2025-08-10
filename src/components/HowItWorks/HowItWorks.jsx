@@ -29,7 +29,7 @@ const HowItWorks = () => {
 
 
     return (
-        <section className={`relative py-10 md:py-20 ${ isDark ? 'bg-accent' : 'bg-gradient-to-t from-white to-[#f5ebfe]'}`}>
+        <section className={`relative py-20 ${ isDark ? 'bg-accent' : 'bg-gradient-to-t from-white to-[#f5ebfe]'}`}>
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10">
 
                 <SectionHeader title={'How It Works'} />
@@ -65,12 +65,12 @@ const HowItWorks = () => {
                         />
                     </div>
                 </div> */}
-                <div className="flex justify-center mt-10">
+                {/* <div className="flex justify-center mt-10">
                     <Button
                         className='cursor-pointer w-full rounded-full px-5 py-2 text-sm md:text-md font-bold border border-gray-300 hover:border-orange-400 transition duration-300'
                     >                        Join Our Community
                     </Button>
-                </div>
+                </div> */}
             </div>
         </section>
     );

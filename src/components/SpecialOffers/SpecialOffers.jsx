@@ -66,7 +66,7 @@ const SpecialOffers = () => {
 
   return (
     <section
-      className={`py-10 md:py-20 ${
+      className={`py-20 ${
         isDark ? "bg-accent" : "bg-gradient-to-b from-white to-[#f5ebfe]"
       }`}
     >
@@ -75,7 +75,7 @@ const SpecialOffers = () => {
           title="Special Offers"
           subtitle="Limited-time deals — handcrafted to delight. Grab them before they’re gone."
         />
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {offers.map((offer) => {
             const discountedPrice = (
               offer.originalPrice -
@@ -117,9 +117,9 @@ const SpecialOffers = () => {
                   </div>
 
                   {/* See More Button */}
-                  <button className="cursor-pointer mt-4 w-full bg-orange-400 hover:bg-orange-500 text-white py-2 px-4 rounded-lg font-medium transition-colors duration-300">
+                  {/* <button className="cursor-pointer mt-4 w-full bg-orange-400 hover:bg-orange-500 text-white py-2 px-4 rounded-lg font-medium transition-colors duration-300">
                     See More
-                  </button>
+                  </button> */}
                 </div>
               </div>
             );

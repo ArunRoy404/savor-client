@@ -17,7 +17,7 @@ const AboutUs = () => {
     );
 
     return (
-        <section className={`relative py-10 md:py-20 ${isDark ? 'bg-accent' : 'bg-gradient-to-b from-white to-[#f5ebfe]'}`}>
+        <section className={`relative py-20 ${isDark ? 'bg-accent' : 'bg-gradient-to-b from-white to-[#f5ebfe]'}`}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="max-w-4xl mx-auto text-center mb-12 px-4">
