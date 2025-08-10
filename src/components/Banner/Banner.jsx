@@ -1,9 +1,11 @@
+import useThemeContext from '../../custom_contexts/useThemeContext';
 import Button from '../UI/Button';
 import BannerSwiper from './BannerSwiper';
 
 const Banner = () => {
+    const {isDark} = useThemeContext()
     return (
-        <div className=' pt-15 bg-white'>
+        <div className={` pt-15 ${isDark ? '' : 'bg-white'}`}>
             <div className='container md:mt-10 mx-auto'>
                 <div className='text-center'>
                     <h1 className='text-4xl md:text-6xl 2xl:text-7xl font-semibold xl:font-normal mb-3 md:mb-6'>Savor the Flavor</h1>
