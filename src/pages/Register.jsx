@@ -90,7 +90,9 @@ const Login = () => {
     return (
         <>
         <title>Savor | Register</title>
-            <Navbar />
+            <div className='!z-[1000]'>
+                <Navbar />
+            </div>
             <div className="h-[calc(100vh-64px)] flex items-center justify-end container mx-auto lg:px-30">
                 <div className="fixed inset-0 z-0">
                     <div className="absolute inset-0 bg-black opacity-40"></div>
@@ -101,7 +103,7 @@ const Login = () => {
                     />
                 </div>
 
-                <div className='mx-auto lg:mx-0 backdrop-blur-sm lg:backdrop-blur-none rounded-2xl z-[1000]'>
+                <div className='mx-auto lg:mx-0 backdrop-blur-sm lg:backdrop-blur-none rounded-2xl '>
                     <div className="w-full md:w-auto text-white">
                         <div className="card w-[calc(100vw-80px)] md:w-lg shrink-0 ">
                             <div className="card-body">

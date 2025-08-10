@@ -41,35 +41,44 @@ const FooterNew = () => {
     const NavLinks = () => (
         <div className="mt-10 flex space-x-10 max-w-max mx-auto">
             <a
-                href="#"
-                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center  hover:bg-white hover:text-[#222222] transition-all duration-300"
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-[#222222] transition-all duration-300"
                 aria-label="Facebook"
             >
                 <FaFacebookF />
             </a>
             <a
-                href="#"
-                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center  hover:bg-white hover:text-[#222222] transition-all duration-300"
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-[#222222] transition-all duration-300"
                 aria-label="Twitter"
             >
                 <FaTwitter />
             </a>
             <a
-                href="#"
-                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center  hover:bg-white hover:text-[#222222] transition-all duration-300"
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-[#222222] transition-all duration-300"
                 aria-label="Instagram"
             >
                 <FaInstagram />
             </a>
             <a
-                href="#"
-                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center  hover:bg-white hover:text-[#222222] transition-all duration-300"
+                href="https://linkedin.com/in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-[#222222] transition-all duration-300"
                 aria-label="LinkedIn"
             >
                 <FaLinkedinIn />
             </a>
         </div>
     )
+
 
     return (
         <footer className={` ${isDark ? '' : 'bg-gradient-to-t from-[#e3cdf7]'} font-semibold pt-20`}>
