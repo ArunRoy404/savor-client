@@ -1,73 +1,120 @@
-import { FaFire, FaShoppingCart } from 'react-icons/fa';
-import OfferCard from './OfferCard';
-
+import { useEffect, useState } from "react";
+import SectionHeader from "../UI/SectionHeader";
 
 const SpecialOffers = () => {
+  // Updated data with your images
+  const offers = [
+    {
+      id: 1,
+      name: "Gourmet Burger Meal",
+      originalPrice: 24.99,
+      discount: 30,
+      image:
+        "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      endTime: new Date().getTime() + 1000 * 60 * 60 * 45, // 45 hours
+    },
+    {
+      id: 2,
+      name: "Truffle Pasta",
+      originalPrice: 18.5,
+      discount: 25,
+      image:
+        "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      endTime: new Date().getTime() + 1000 * 60 * 60 * 22, // 22 hours
+    },
+    {
+      id: 3,
+      name: "Rainbow Sushi Platter",
+      originalPrice: 32.75,
+      discount: 20,
+      image:
+        "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      endTime: new Date().getTime() + 1000 * 60 * 60 * 15, // 15 hours
+    },
+  ];
+
+  const [timeLeft, setTimeLeft] = useState({});
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const updated = {};
+      offers.forEach((offer) => {
+        const diff = offer.endTime - new Date().getTime();
+        if (diff > 0) {
+          const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(
+            2,
+            "0"
+          );
+          const minutes = String(
+            Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+          ).padStart(2, "0");
+          const seconds = String(
+            Math.floor((diff % (1000 * 60)) / 1000)
+          ).padStart(2, "0");
+          updated[offer.id] = `${hours}:${minutes}:${seconds}`;
+        } else {
+          updated[offer.id] = "Expired";
+        }
+      });
+      setTimeLeft(updated);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+
   return (
-    <section className="relative py-20 bg-gray-700 overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://plus.unsplash.com/premium_photo-1663850685051-ef8c3a8524ad?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGZvb2QlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww"
-          alt="Restaurant ambiance"
-          className="w-full h-full object-cover opacity-30"
+    <section className="py-10 md:py-20 bg-gradient-to-b from-white to-[#f5ebfe]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          title="Special Offers"
+          subtitle="Limited-time deals — handcrafted to delight. Grab them before they’re gone."
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent"></div>
-      </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          {offers.map((offer) => {
+            const discountedPrice = (
+              offer.originalPrice -
+              (offer.originalPrice * offer.discount) / 100
+            ).toFixed(2);
 
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-orange-500 text-white text-sm font-bold rounded-full mb-5">
-            <FaFire className="mr-2" /> FLASH DEALS
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
-            SIZZLING <span className="text-orange-400">OFFERS</span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Claim before time runs out
-          </p>
-        </div>
-
-        {/* Offers Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <OfferCard
-            image="https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
-            title="Gourmet Pasta"
-            discount={30}
-            originalPrice={35.99}
-            timeLeft={6 * 3600 + 22 * 60 + 45}
-          />
-
-          <OfferCard
-            image="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            title="Burger Combo"
-            discount={20}
-            originalPrice={18.50}
-            timeLeft={2 * 3600 + 15 * 60} 
-          />
-
-          <OfferCard
-            image="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            title="Dessert Box"
-            discount={15}
-            originalPrice={24.99}
-            timeLeft={24 * 3600}
-          />
-        </div>
-
-        {/* CTA */}
-        <div className="text-center mt-16">
-          <button className=" cursor-pointer inline-flex items-center px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white text-lg font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-xl shadow-orange-500/20">
-            <FaShoppingCart className="mr-3" />
-            VIEW ALL OFFERS
-          </button>
+            return (
+              <div
+                key={offer.id}
+                className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300"
+              >
+                <div className="relative">
+                  <img
+                    src={offer.image}
+                    alt={offer.name}
+                    className="w-full h-56 object-cover"
+                  />
+                  <span className="absolute top-3 left-3 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-md">
+                    {offer.discount}% OFF
+                  </span>
+                  <span className="absolute top-3 right-3 bg-black bg-opacity-60 text-white px-3 py-1 rounded-full text-sm shadow-md">
+                    {timeLeft[offer.id] || ""}
+                  </span>
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold mb-2 text-gray-800">
+                    {offer.name}
+                  </h3>
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm text-gray-500 line-through">
+                      ${offer.originalPrice}
+                    </span>
+                    <span className="text-2xl font-bold text-orange-400">
+                      ${discountedPrice}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 };
-
-
 
 export default SpecialOffers;

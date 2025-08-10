@@ -20,12 +20,12 @@ const FooterNew = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your Email"
-                    className="w-full px-4 py-2 bg-gray-700 text-white focus:outline-none"
+                    className="w-full px-4 py-2 border-2 border-gray-400 border-r-0  focus:outline-none"
                     required
                 />
                 <button
                     type="submit"
-                    className="bg-[#ff5e15] text-white px-6 py-2  font-medium hover:bg-[#e04e0d] transition-colors duration-300"
+                    className="bg-[#ff5e15]  px-6 py-2  font-medium hover:bg-[#e04e0d] transition-colors duration-300"
                 >
                     <IoMailOutline />
                 </button>
@@ -37,28 +37,28 @@ const FooterNew = () => {
         <div className="mt-10 flex space-x-10 max-w-max mx-auto">
             <a
                 href="#"
-                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-[#222222] transition-all duration-300"
+                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center  hover:bg-white hover:text-[#222222] transition-all duration-300"
                 aria-label="Facebook"
             >
                 <FaFacebookF />
             </a>
             <a
                 href="#"
-                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-[#222222] transition-all duration-300"
+                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center  hover:bg-white hover:text-[#222222] transition-all duration-300"
                 aria-label="Twitter"
             >
                 <FaTwitter />
             </a>
             <a
                 href="#"
-                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-[#222222] transition-all duration-300"
+                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center  hover:bg-white hover:text-[#222222] transition-all duration-300"
                 aria-label="Instagram"
             >
                 <FaInstagram />
             </a>
             <a
                 href="#"
-                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-[#222222] transition-all duration-300"
+                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center  hover:bg-white hover:text-[#222222] transition-all duration-300"
                 aria-label="LinkedIn"
             >
                 <FaLinkedinIn />
@@ -67,7 +67,7 @@ const FooterNew = () => {
     )
 
     return (
-        <footer className="bg-slate-800 text-white font-semibold pt-20">
+        <footer className="bg-gradient-to-t from-[#e3cdf7]  font-semibold pt-20">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
                 <div className="flex flex-col items-center text-center mx-auto mb-10">
                     <div className="space-y-6 max-w-150">
@@ -96,7 +96,7 @@ const FooterNew = () => {
             </div>
 
             {/* Footer Bottom */}
-            <div className="bg-gray-900 py-5">
+            <div className="py-5">
                 <div className="flex flex-col gap-2 md:flex-row justify-around px-4 sm:px-6 lg:px-8 text-center">
                     <p className=" text-sm">
                         &copy; {new Date().getFullYear()} Savor. All Rights Reserved.
