@@ -85,7 +85,7 @@ const SpecialOffers = () => {
             return (
               <div
                 key={offer.id}
-                className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300"
+                className={`${isDark ? 'bg-gray-600' : 'bg-white'} rounded-xl shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300`}
               >
                 <div className="relative">
                   <img
@@ -101,14 +101,14 @@ const SpecialOffers = () => {
                   </span>
                 </div>
                 <div className="p-5">
-                  <h3 className="text-lg font-semibold mb-2 text-gray-800">
+                  <h3 className="text-lg font-semibold mb-2 ">
                     {offer.name}
                   </h3>
-                  <p className="text-sm text-gray-500 mb-3">
+                  <p className="text-sm opacity-70 mb-3">
                     {offer.description}
                   </p>
                   <div className="flex items-center gap-3">
-                    <span className="text-sm text-gray-500 line-through">
+                    <span className="text-sm opacity-70 line-through">
                       ${offer.originalPrice}
                     </span>
                     <span className="text-2xl font-bold text-orange-400">
