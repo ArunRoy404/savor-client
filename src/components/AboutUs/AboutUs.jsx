@@ -17,12 +17,12 @@ const AboutUs = () => {
     );
 
     return (
-        <section className={`py-10 md:py-20 bg-gradient-to-t from-[#f5ebfe] to-white`}>
+        <section className={`relative py-10 md:py-20 ${isDark ? 'bg-accent' : 'bg-gradient-to-b from-white to-[#f5ebfe]'}`}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="max-w-4xl mx-auto text-center mb-12 px-4">
-                    <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-800">About <span className="text-orange-400">Savor</span></h2>
-                    <p className="mt-3 text-gray-600 text-sm sm:text-base">The platform where food lovers and creators connect</p>
+                    <h2 className={`text-3xl sm:text-4xl font-extrabold ${isDark ? 'text-gray-300' : ' text-gray-800'}`}>About <span className="text-orange-400">Savor</span></h2>
+                    <p className={`mt-3 ${isDark ? 'text-gray-300' : 'text-gray-600' }  text-sm sm:text-base`}>The platform where food lovers and creators connect</p>
                 </div>
 
 

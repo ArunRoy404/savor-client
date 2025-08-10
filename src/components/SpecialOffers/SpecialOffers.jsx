@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import SectionHeader from "../UI/SectionHeader";
+import useThemeContext from "../../custom_contexts/useThemeContext";
 
 const SpecialOffers = () => {
+  const {isDark} = useThemeContext()
   // Updated data with your images
   const offers = [
     {
@@ -64,7 +66,7 @@ const SpecialOffers = () => {
 
 
   return (
-    <section className="py-10 md:py-20 bg-gradient-to-b from-white to-[#f5ebfe]">
+    <section className={`py-10 md:py-20  ${ isDark ? 'bg-accent' : 'bg-gradient-to-b from-white to-[#f5ebfe]'}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title="Special Offers"

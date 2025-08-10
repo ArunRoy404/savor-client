@@ -1,8 +1,10 @@
 import { FaQuoteLeft, FaStar } from "react-icons/fa";
+import useThemeContext from "../../custom_contexts/useThemeContext";
 
 const TestimonialCard = ({ quote, author, role, rating, avatar }) => {
+    const { isDark } = useThemeContext()
     return (
-        <div className="p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+        <div className={`p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ${isDark ? 'bg-gray-700' : ''} `}>
             {/* Quote Icon */}
             <FaQuoteLeft className="text-amber-400 text-2xl mb-4 opacity-70" />
 

@@ -1,23 +1,22 @@
 import { useEffect, useState } from "react";
-import { getTheme, setTheme } from "../utilities/themeLocalStorage";
 import ThemeContext from "../contexts/ThemeContext";
 
 const ThemesProvider = ({ children }) => {
-    const [isDark, setIsDark] = useState(false)
-
-
-    useEffect(() => {
-        const theme = getTheme()
-        if (theme === 'dark') {
-            setIsDark(true)
-        }
-    }, [])
+    const [isDark, setIsDark] = useState(() => {
+        return localStorage.theme === "dark" ||
+            (!("theme" in localStorage) &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ? true
+            : false;
+    })
 
     useEffect(() => {
         if (isDark) {
-            setTheme('dark')
+            document.documentElement.classList.add("dark");
+            localStorage.theme = "dark"
         } else {
-            setTheme('light')
+            document.documentElement.classList.remove("dark")
+            localStorage.theme = "light"
         }
     }, [isDark])
 
@@ -25,6 +24,7 @@ const ThemesProvider = ({ children }) => {
     const handleToggle = () => {
         setIsDark(!isDark)
     }
+
 
     const themeData = {
         isDark,

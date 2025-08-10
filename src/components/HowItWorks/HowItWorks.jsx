@@ -1,8 +1,10 @@
 import { FaUtensils, FaUsers, FaHeart } from "react-icons/fa";
 import Button from "../UI/Button";
 import SectionHeader from "../UI/SectionHeader";
+import useThemeContext from "../../custom_contexts/useThemeContext";
 
 const HowItWorks = () => {
+    const { isDark } = useThemeContext()
 
     const features = [
         {
@@ -25,18 +27,12 @@ const HowItWorks = () => {
         },
     ];
 
-    const FeatureItem = ({ title, description }) => (
-        <div>
-            <h4 className="text-2xl font-bold mb-1">{title}</h4>
-            <p className="opacity-80">{description}</p>
-        </div>
-    );
 
     return (
-        <section className="relative py-10 md:py-20 bg-gradient-to-b from-[#f5ebfe] to-white ]">
+        <section className={`relative py-10 md:py-20 ${ isDark ? 'bg-accent' : 'bg-gradient-to-t from-white to-[#f5ebfe]'}`}>
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10">
 
-                <SectionHeader title={'How It Works'}/>
+                <SectionHeader title={'How It Works'} />
 
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10">

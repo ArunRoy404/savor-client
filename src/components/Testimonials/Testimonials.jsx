@@ -1,8 +1,10 @@
 import TestimonialCard from "./TestimonialCard";
+import useThemeContext from "../../custom_contexts/useThemeContext";
 
 const Testimonials = () => {
+    const { isDark } = useThemeContext()
     return (
-        <section className="relative py-10 md:py-20 bg-gradient-to-b from-[#f5ebfe] via-white to-[#f5ebfe]`">
+        <section className={`relative py-10 md:py-20 ${isDark ? ' bg-accent ' : 'bg-gradient-to-b from-[#f5ebfe] '} `}>
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="max-w-4xl mx-auto text-center mb-12 px-4">
