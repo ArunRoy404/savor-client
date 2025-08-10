@@ -2,7 +2,7 @@ import { IoSearch } from "react-icons/io5";
 
 const Search = ({ searchText, handleSearch}) => {
     return (
-        <div className="relative w-full max-w-md">
+        <div className="relative w-full ">
             <input
                 type="text"
                 placeholder="Search food..."
