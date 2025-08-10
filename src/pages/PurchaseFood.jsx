@@ -97,7 +97,7 @@ const PurchaseFood = () => {
 
 
     return (
-        <div className=" min-h-screen py-10 px-4">
+        <div className=" container mx-auto px-4 sm:px-6 lg:px-8 py-10">
             <title>Purchase Food</title>
             <div className={`${isDark ? 'bg-gray-800' : 'bg-white/80'} transition-all duration-1000 max-w-3xl mx-auto p-6 md:p-8 rounded-xl shadow-lg`}>
 

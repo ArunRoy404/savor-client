@@ -32,7 +32,7 @@ const FoodGallery = () => {
   if (isPending) return <Loader />
   if (error) return <Error />
   return (
-    <div className='px-5 container mx-auto'>
+    <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
       <title>Savor | Gallery</title>
       <PageTitle
         title={'A Visual Taste of Our Menu'}

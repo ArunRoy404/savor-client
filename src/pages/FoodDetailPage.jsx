@@ -32,7 +32,7 @@ const FoodDetailPage = () => {
   if (error) return <Error error={error} />
 
   return (
-    <div className="px-5 min-h-screen md:px-5 lg:px-30 py-10">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <title>Savor | Food Detail</title>
       {/* Hero Section */}
       <div className="mx-auto grid lg:grid-cols-2 gap-10">

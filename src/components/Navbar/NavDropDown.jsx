@@ -8,7 +8,7 @@ const NavDropDown = () => {
             </div>
             <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-30 space-y-1 p-5 shadow">
+                className="menu menu-sm dropdown-content backdrop-blur-lg rounded-box z-1 mt-3 w-40 space-y-3 p-5 shadow ">
                 <NavLinksList />
             </ul>
         </div>

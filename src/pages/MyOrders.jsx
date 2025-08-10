@@ -25,7 +25,7 @@ const MyOrders = () => {
     if (error) return <Error error={error} />
 
     return (
-        <div className='px-5 container mx-auto'>
+        <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
             <title>Savor | My Orders</title>
             <div className="py-10">
                 <div className="mb-10">
