@@ -3,12 +3,13 @@ import SectionHeader from "../UI/SectionHeader";
 import useThemeContext from "../../custom_contexts/useThemeContext";
 
 const SpecialOffers = () => {
-  const {isDark} = useThemeContext()
-  // Updated data with your images
+  const { isDark } = useThemeContext();
+
   const offers = [
     {
       id: 1,
       name: "Gourmet Burger Meal",
+      description: "Juicy burger with crispy fries and a refreshing drink.",
       originalPrice: 24.99,
       discount: 30,
       image:
@@ -18,6 +19,7 @@ const SpecialOffers = () => {
     {
       id: 2,
       name: "Truffle Pasta",
+      description: "Creamy pasta infused with aromatic black truffle.",
       originalPrice: 18.5,
       discount: 25,
       image:
@@ -27,6 +29,7 @@ const SpecialOffers = () => {
     {
       id: 3,
       name: "Rainbow Sushi Platter",
+      description: "Fresh assorted sushi with vibrant seasonal ingredients.",
       originalPrice: 32.75,
       discount: 20,
       image:
@@ -43,10 +46,7 @@ const SpecialOffers = () => {
       offers.forEach((offer) => {
         const diff = offer.endTime - new Date().getTime();
         if (diff > 0) {
-          const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(
-            2,
-            "0"
-          );
+          const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, "0");
           const minutes = String(
             Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
           ).padStart(2, "0");
@@ -64,9 +64,12 @@ const SpecialOffers = () => {
     return () => clearInterval(interval);
   }, []);
 
-
   return (
-    <section className={`py-10 md:py-20  ${ isDark ? 'bg-accent' : 'bg-gradient-to-b from-white to-[#f5ebfe]'}`}>
+    <section
+      className={`py-10 md:py-20 ${
+        isDark ? "bg-accent" : "bg-gradient-to-b from-white to-[#f5ebfe]"
+      }`}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title="Special Offers"
@@ -101,6 +104,9 @@ const SpecialOffers = () => {
                   <h3 className="text-lg font-semibold mb-2 text-gray-800">
                     {offer.name}
                   </h3>
+                  <p className="text-sm text-gray-500 mb-3">
+                    {offer.description}
+                  </p>
                   <div className="flex items-center gap-3">
                     <span className="text-sm text-gray-500 line-through">
                       ${offer.originalPrice}
@@ -109,6 +115,11 @@ const SpecialOffers = () => {
                       ${discountedPrice}
                     </span>
                   </div>
+
+                  {/* See More Button */}
+                  <button className="cursor-pointer mt-4 w-full bg-orange-400 hover:bg-orange-500 text-white py-2 px-4 rounded-lg font-medium transition-colors duration-300">
+                    See More
+                  </button>
                 </div>
               </div>
             );

@@ -7,7 +7,7 @@ const FoodCard = ({ food }) => {
 
     const { isDark } = useThemeContext()
 
-    const { image, name, purchaseCount, nutritional, rating, price, quantity } = food
+    const { image, name, description, purchaseCount, rating, price, quantity } = food
     return (
         <div className={`${isDark ? 'bg-gray-700' : 'bg-white'} cursor-pointer group z-10 overflow-hidden text-left flex-shrink-0 relative  rounded-2xl hover:drop-shadow-xl transition duration-400`}>
             <img className="group-hover:scale-105 transition duration-300 h-40 min-w-70 w-full md:h-50 object-cover" src={image} alt="" />
@@ -23,16 +23,20 @@ const FoodCard = ({ food }) => {
                         <span className="opacity-50"> {rating} Rating</span>
                     </p>
                 </div>
-                <p className="mt-2 text-sm opacity-50 font-bold">{nutritional.caloriesPerServing} Cal</p>
+                {/* <p className="mt-2 text-sm opacity-50 font-bold">{nutritional.caloriesPerServing} Cal</p> */}
 
                 <div>
                     <p className="font-bold opacity-70 text-sm mt-3">Total Served: {purchaseCount}</p>
                     <p className="font-bold opacity-70 text-sm mt-3">Available: {quantity}</p>
                 </div>
+
+                <div>
+                    <p className="font-bold text-sm mt-3">{description?.slice(0,40)}....</p>
+                </div>
                 <div className="mt-3">
                     <Button
                         className='cursor-pointer w-full rounded-full px-5 py-2 text-sm md:text-md font-bold border border-gray-300 hover:border-orange-400 transition duration-300'
-                        to={`/food/${food._id}`}>Details</Button>
+                        to={`/food/${food._id}`}>See More</Button>
                 </div>
             </div>
         </div>

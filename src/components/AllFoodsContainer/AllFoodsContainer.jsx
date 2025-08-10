@@ -27,7 +27,7 @@ const AllFoodsContainer = () => {
     const container = (
         isPending ? <Loader />
             : error ? <Error />
-                : <div className="md:mt-20 grid md:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-15 xl:gap-20 md:px-5 xl:px-40">
+                : <div className="md:mt-20 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10 md:gap-10 xl:gap-10 ">
                     {
                         data?.length === 0 && <NoResultFound />
                     }

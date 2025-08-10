@@ -9,7 +9,7 @@ const TopFoods = () => {
 
     return (
         <div className={`py-10 md:py-20 ${isDark ? 'bg-accent ' : 'bg-gradient-to-b from-[#f5ebfe] via-white to-[#f5ebfe]'} `}>
-            <div className="container mx-auto text-center rounded-2xl relative">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center rounded-2xl relative">
                 <img className="absolute blur-[2px] w-20 top-10 left-10 md:w-40 md:top-20 md:left-20 rotate-270" src={leaf} alt="" />
                 <img className="absolute blur-[1px] w-20 bottom-10 right-10 md:w-40 md:bottom-20 md:right-20" src={pea} alt="" />
                 <SectionHeader

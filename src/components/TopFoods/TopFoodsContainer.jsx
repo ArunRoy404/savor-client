@@ -19,9 +19,9 @@ const TopFoodsContainer = () => {
 
 
     return (
-        <div className="px-5">
+        <div className="">
             <ScrollContainer className="scroll-container">
-                <div className="flex md:grid md:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-15 xl:gap-30 md:px-5 xl:px-40">
+                <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10 md:gap-10 xl:gap-10 ">
                     {
                         data.length === 0 && <NoResultFound />
                     }
@@ -33,7 +33,7 @@ const TopFoodsContainer = () => {
             <div className="mt-10">
                 <Button
                     to={'/all-foods'}
-                    className="cursor-pointer rounded-full px-5 py-2 text-sm md:text-md font-bold border bg-black text-white border-black hover:bg-white  hover:text-black transition duration-300">
+                    className="cursor-pointer rounded-full px-5 py-2 text-sm md:text-md font-bold bg-orange-400 text-white hover:bg-white  hover:text-black transition duration-300">
                     Show All
                 </Button>
             </div>
