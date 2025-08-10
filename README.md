@@ -148,4 +148,4 @@ Follow these steps to run the Savor project on your local machine.
 ---
 
 # 📸 Screenshot
-![alt text](image.png)
+![alt text](SavorScreenshot.png)
