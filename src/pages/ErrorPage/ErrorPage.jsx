@@ -1,19 +1,22 @@
 import React from "react";
 import { Link } from "react-router";
 import { FaUtensils, FaHome } from "react-icons/fa";
+import useThemeContext from "../../custom_contexts/useThemeContext";
 
 const ErrorPage = () => {
+    const { isDark } = useThemeContext();
+
   return (
-    <div className="min-h-screen bg-gradient-to-b to-[#f5ebfe] flex flex-col items-center justify-center p-6 text-center">
+    <div className={`min-h-screen ${ isDark ? 'bg-gray-900' : 'bg-gradient-to-b to-[#f5ebfe]'} flex flex-col items-center justify-center p-6 text-center`}>
       <div className="max-w-2xl mx-auto">
         {/* Animated 404 text */}
         <div className="relative mb-8">
-          <h1 className="text-9xl font-bold text-gray-800 opacity-10">404</h1>
+          <h1 className={`text-9xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} ] opacity-10`}>404</h1>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
               <FaUtensils className="text-6xl text-amber-500 mx-auto mb-4 animate-bounce" />
-              <h2 className="text-4xl font-bold text-gray-800 mb-2">Recipe Not Found</h2>
-              <p className="text-lg text-gray-600">
+              <h2 className={`text-4xl font-bold ${isDark ? 'text-white/90' : 'text-gray-800'}   mb-2`}>Recipe Not Found</h2>
+              <p className={`text-lg ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
                 The page you're looking for doesn't exist or has been moved.
               </p>
             </div>
@@ -38,10 +41,10 @@ const ErrorPage = () => {
 
         {/* Suggested actions */}
         <div className="mb-8">
-          <h3 className="text-xl font-semibold text-gray-700 mb-3">
+          <h3 className={`text-xl font-semibold  ${isDark ? 'text-white/80' : 'text-gray-700'} mb-3`}>
             Here's what you can do:
           </h3>
-          <ul className="flex flex-wrap justify-center gap-4 text-gray-600">
+          <ul className={`flex flex-wrap justify-center gap-4  ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
             <li className="flex items-center">
               <span className="bg-amber-100 text-orange-400 rounded-full p-2 mr-2">
                 1
@@ -73,7 +76,7 @@ const ErrorPage = () => {
         </Link>
 
         {/* Footer note */}
-        <p className="mt-8 text-sm text-gray-500">
+        <p className={`mt-8 text-sm  ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
           Hungry for more? Explore our <Link to="/all-foods" className="text-orange-400 hover:underline">featured recipes</Link>
         </p>
       </div>
