@@ -30,7 +30,7 @@ const Navbar = () => {
         <nav className={`${scrolled ? 'shadow-md bg-[#f5ebfe] ' : 'bg-transparent'} ${isDark ? 'bg-accent' : '' } transition-all duration-300 z-100 w-full fixed top-0`}>
             <div className="relative z-100 w-full  flex">
                 <div className="navbar container px-4 sm:px-6 lg:px-8 mx-auto flex justify-between">
-                    <div className="flex items-center gap-20">
+                    <div className="flex items-center gap-20 flex-1">
 
                         {/* logo  */}
                         <Logo />

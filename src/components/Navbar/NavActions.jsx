@@ -12,7 +12,7 @@ const NavActions = () => {
     const { firebaseUser } = useAuthContext()
 
     return (
-        <div className="flex items-center md:navbar-end space-x-2 ">
+        <div className="flex items-center space-x-2 ">
             {/* theme toggle  */}
             <NavAction>
                 <ThemeToggle />
